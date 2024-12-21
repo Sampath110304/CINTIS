@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities & Placements | EEE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <style>
+        #placementsChart {
+            display: block;
+            margin: 0 auto;
+            width: 700px;
+            height: 450px;
+        }
+
+        .section img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .clubs-section {
+            display: block;
+            margin: 20px auto;
+            width: 55%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .club {
+            margin-bottom: 20px;
+        }
+
+        .club h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .club p {
+            margin: 10px 0;
+        }
+
+        .language-box {
+            display:none;
+    }
+
+    .language-box label {
+        display:none;
+    }
+
+    nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        color: white;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        color: white;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .back-btn {
+        margin: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        font-family: 'Poppins';
+    }
+
+    .back-btn:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="language-box">
+            <label>
+                <input type="radio" name="language" value="english" checked onclick="changeLanguage('english')">
+            <label>
+                <input type="radio" name="language" value="telugu" onclick="changeLanguage('telugu')">
+            </label>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b>Home</b></a></li>
+                <li><a href="about.html"><b>Department</b></a></li>
+                <li><a href="faculty.html"><b>Faculty</b></a></li>
+                <li><a href="attendance.html"><b>R&D</b></a></li>
+                <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b>Placements</b></a></li>
+                <li><a href="General.html"><b>Route Map</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b> ← Home </b></button>
+        <h2 style="text-align: center;" id="mainHeading">Placements</h2>
+        <div class="section_p">
+            <h3 style="text-align: center;" id="graphheading">Placement Statistics</h3>
+            <canvas id="placementsChart"></canvas>
+        </div>
+        <div class="section">
+            <h3 style="text-align: center;" id="recentact">Recent Activities</h3>
+            <br>
+            <p><b>Industrial Visit to VTPS</b></p>
+            <br>
+            <img src="grid.jpg" style="width:500px;">
+            <br><br>
+        </div>
+        <div class="section">
+            <p><b> Placement Training in association with BYTS INDIA</b></p>
+            <br>
+            <img src="plac_trn.jpg" style="width:500px;">
+        </div>
+        <div class="section">
+            <p><b>3 Days Industrial Visit to DAIKIN, Sricity</b></p>
+            <br>
+            <img src="daikin.jpg" style="width:500px;">
+        </div>
+
+        <div class="clubs-section">
+            <h2 style="text-align: center; color: blue;" id="clubheading">᯽ Student Clubs ᯽</h2>
+
+            <div class="club">
+                <h3>ISTE Club</h3>
+                <p><b>Club Details:</b> The ISTE Club focuses on fostering technical skills and innovation among students. It organizes workshops, seminars, and guest lectures regularly.</p>
+                <p><b>Faculty Incharge:</b> Ms. K. Bhavana</p>
+                <p><b>Events:</b> Coding contests, Technical quizzes, and Guest lectures on emerging technologies.</p>
+            </div>
+            <br>
+            <div class="club">
+                <h3>SESI Club</h3>
+                <p><b>Club Details:</b> SESI Club promotes renewable energy awareness and conducts research-oriented projects on sustainable energy solutions.</p>
+                <p><b>Faculty Incharge:</b> Ms. K. Bhavana</p>
+                <p><b>Events:</b> Solar energy workshops, Energy conservation drives, and Research paper presentations.</p>
+            </div>
+             <br>
+            <div class="club">
+                <h3>BIS Club</h3>
+                <p><b>Club Details:</b> BIS Club focuses on building innovative solutions in the fields of IoT, AI, and data analytics. It encourages collaborative projects and idea-sharing.</p>
+                <p><b>Faculty Incharge:</b> Mr. T. Srinivasa Rao</p>
+                <p><b>Events:</b> Hackathons, AI-based project expos, and Data analytics bootcamps.</p>
+            </div>
+            <br>
+            <div class="club">
+                <h3>IOT Club</h3>
+                <p><b>Club Details:</b> The IoT Club engages students in learning and applying IoT technologies to solve real-world problems, enhancing practical skills.</p>
+                <p><b>Faculty Incharge:</b> Mr. M. Hemanth Sai</p>
+                <p><b>Events:</b> IoT device development workshops, Smart city project contests, and Networking sessions with industry experts.</p>
+            </div>
+        </div>
+    </main>
+    <audio id="thankYouAudio" src="thank_you.mp3" preload="auto"></audio>
+    <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let currentAudio = null;
+
+        function playThankYouAudio() {
+            const language = localStorage.getItem("preferredLanguage") || "english";
+            const audioId = language === "telugu" ? "thankYouAudioTelugu" : "thankYouAudio";
+
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            currentAudio = document.getElementById(audioId);
+            currentAudio.play();
+            setTimeout(() => {
+                localStorage.setItem("preferredLanguage", "english"); // Reset language to English
+                window.location.href = "index.html";
+            }, 3000); 
+            // Wait for 3 seconds before redirect
+        }
+
+        const placementAudios = {
+        english: {
+        2021: 'placement_2021.mp3',
+        2022: 'placement_2022.mp3',
+        2023: 'placement_2023.mp3',
+        2024: 'placement_2024.mp3'
+       },
+        telugu: {
+        2021: 'placement_2021_tel.mp3',
+        2022: 'placement_2022_tel.mp3',
+        2023: 'placement_2023_tel.mp3',
+        2024: 'placement_2024_tel.mp3'
+       }
+       };
+
+        const ctx = document.getElementById('placementsChart').getContext('2d');
+        const placementsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Placements',
+                    data: [114, 138, 149, 162],
+                    backgroundColor: ['#ffdd57', '#ffd500', '#ffcc00', '#ffb900']
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true
+                    },
+                    datalabels: {
+                        display: true,
+                        anchor: 'end',
+                        align: 'start',
+                        formatter: (value) => value,
+                        font: {
+                            weight: 'bold'
+                        },
+                        color: 'black'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 200,
+                        ticks: {
+                            stepSize: 50,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Placements',
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Pass out Year',
+                        },
+                    }
+                },
+                onClick: (event, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        const year = placementsChart.data.labels[index];
+                        playPlacementAudio(year);
+                    }
+                }
+            },
+            plugins: [{
+                id: 'customLabels',
+                afterDatasetsDraw(chart) {
+                    const { ctx } = chart;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const data = dataset.data[index];
+                            ctx.fillStyle = 'black';
+                            ctx.font = 'bold 12px Arial';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(data, bar.x, bar.y - 5);
+                        });
+                    });
+                }
+            }]
+        });
+
+        function playPlacementAudio(year) {
+    const language = localStorage.getItem("preferredLanguage") || "english";
+    const audioSrc = placementAudios[language][year];
+
+    if (!audioSrc) return;
+
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    }
+
+    const audio = new Audio(audioSrc);
+    currentAudio = audio;
+    audio.play();
+}
+
+            const transliteration = {
+            telugu: {
+                "Home": "హోమ్",
+                "Department": "డిపార్ట్మెంట్",
+                "Faculty": "ప్రోఫెసర్స్",
+                "R&D": "రీసెర్చ్",
+                "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+                "Placements": "ప్లేస్మెంట్స్",
+                "Route Map": "రూట్ మ్యాప్",
+                "← Home ": " ← హోమ్ ",
+                "Placement Statistics":"EEE డిపార్ట్మెంట్ లో ప్లేస్మెంట్స్ సంఖ్య ( 2021 నుంచి)",
+                "Recent Activities":"కార్యక్రమాలు",
+                "᯽ Student Clubs ᯽":"᯽ స్టూడెంట్ క్లబ్స్ ᯽"
+            },
+            english: {
+                "హోమ్": "Home",
+                "డిపార్ట్మెంట్": "Department",
+                "ప్రోఫెసర్స్": "Faculty",
+                "రీసెర్చ్": "R&D",
+                "లాబ్స్ & క్లాస్రూమ్స్": "Labs & Classrooms",
+                "ప్లేస్మెంట్స్": "Placements",
+                "రూట్ మ్యాప్": "Route Map",
+                " ← Home ": " ← Home ",
+                "Placement Statistics":"Placement Statistics",
+                "Recent Activities":"Recent Activities",
+                "Placements":"Placements",
+                "᯽ Student Clubs ᯽":"᯽ Student Clubs ᯽"
+            }
+        };
+
+            function changeLanguage(language) {
+            localStorage.setItem("preferredLanguage", language);
+
+            // Change text of navigation links
+            const navLinks = document.querySelectorAll("nav ul li a b");
+            navLinks.forEach(link => {
+                link.textContent = transliteration[language][link.textContent] || link.textContent;
+            });
+            document.getElementById("mainHeading").textContent = transliteration[language]["Placements"];
+            document.getElementById("graphheading").textContent = transliteration[language]["Placement Statistics"];
+            document.getElementById("recentact").textContent = transliteration[language]["Recent Activities"];
+            document.getElementById("clubheading").textContent = transliteration[language]["᯽ Student Clubs ᯽"];
+            // Update "Back" button text
+            const backBtn = document.getElementById("backBtn");
+            backBtn.innerHTML = `<b>${transliteration[language][" ← Home "] || " ← హోమ్  "}</b>`;
+
+        }
+
+        function applySavedLanguage() {
+            const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
+            document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
+            changeLanguage(savedLanguage);
+        }
+
+        // Apply the saved language on page load
+        document.addEventListener('DOMContentLoaded', applySavedLanguage);
+    </script>
+</body>
+</html>

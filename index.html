@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEE Department | PVPSIT</title>
+    <link rel="stylesheet" href="styles.css">                                    
+    <script src="scripts.js" defer></script>
+    <style>
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            color: white;
+            position: sticky; /* Makes the navigation bar stick to the top */
+            top: 0; /* Stick to the top of the viewport */
+            z-index: 1000; /* Ensures it stays above other content */
+        }
+
+        .language-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            padding: 10px;
+            width: fit-content;
+            background-color: #ffdd57;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            color: darkblue;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .language-box label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .language-box input[type="radio"] {
+            accent-color: blue;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #date-box {
+            position: absolute;
+            top: 12px; /* Adjusted for better alignment */
+            right: 10px;
+            background-color: white;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        #time-box {
+            position: absolute;
+            top: 22px;
+            left: 10px;
+            background-color: white;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+
+        #main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-left: 75px;
+            margin-right: 75px;
+        }
+
+        #title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers child elements horizontally */
+            justify-content: center; /* Centers child elements vertically if needed */
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        #title-text {
+            text-shadow: 1px 1px 2px lightgreen, 0 0 25px lightseagreen, 0 0 5px lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b>Home</b></a></li>
+                <li><a href="about.html"><b>Department</b></a></li>
+                <li><a href="faculty.html"><b>Faculty</b></a></li>
+                <li><a href="attendance.html"><b>R&D</b></a></li>
+                <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b>Placements</b></a></li>
+                <li><a href="General.html"><b>Route Map</b></a></li>
+            </ul>
+            <div id="date-box"></div>
+            <div id="time-box"></div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="main-container">
+            <img src="pvp.png" alt="College Logo" style="width: 145px;">
+            <div id="title-container">
+                <h1 id="title-text"><b>Hi, This is CINTIS!!</b></h1>
+                <div class="language-box">
+                    <p><b>Select your language  || భాషను ఎంచుకోగలరు</b></p>
+                    <label>
+                        <input type="radio" name="language" value="english" checked onclick="changeLanguage('english')">
+                        English
+                        <input type="radio" name="language" value="telugu"  onclick="changeLanguage('telugu')">
+                        తెలుగు
+                    </label>
+                </div>
+            </div>
+            <img src="eee-removebg-preview.png" alt="Department Logo" style="width: 200px;">
+        </div>
+        <div style="margin: 2px; margin-right: 47px;">
+            <div id="slideshow" style="max-width: 800px; margin: 0 auto; box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5); border-radius: 15px;">
+                <img src="college.jpg" alt="Slide 1" style="width: 100%; display: none; border-radius: 15px;" onclick="playGreeting()">
+                <img src="accm.jpg" alt="Slide 2" style="width: 100%; display: none; border-radius: 15px;" onclick="playGreeting()">
+                <img src="iisname.jpg" alt="Slide 3" style="width: 100%; display: none; border-radius: 15px;" onclick="playGreeting()">
+            </div>
+        </div>
+    </main>
+
+    <audio id="greetingAudio" src="" preload="auto"></audio>
+
+    <script>
+        // Save original English text
+        const originalText = {
+            navLinks: Array.from(document.querySelectorAll("nav ul li a b")).map(link => link.textContent.trim()),
+            title: document.getElementById("title-text").textContent.trim()
+        };
+
+        // Slideshow
+        let slides = document.querySelectorAll("#slideshow img");
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? "block" : "none";
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 3000);
+
+        showSlide(currentSlide);
+
+        // Language Transliteration
+        const transliteration = {
+            telugu: {
+                "Home": "హోమ్",
+                "Department": "డిపార్ట్మెంట్",
+                "Faculty": "ప్రోఫెసర్స్",
+                "R&D": "రీసెర్చ్",
+                "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+                "Placements": "ప్లేస్మెంట్స్",
+                "Route Map": "రూట్ మ్యాప్",
+                "Hi, This is CINTIS!!": "నమస్కారం, నా పేరు CINTIS!!"
+            }
+        };
+
+        transliteration.english = {};
+        originalText.navLinks.forEach((text, index) => {
+            transliteration.english[text] = text;
+        });
+        transliteration.english[originalText.title] = originalText.title;
+
+        // Audio greetings based on time
+        const audioGreetings = {
+            english: {
+                morning: "good_morning.mp3",
+                afternoon: "good_afternoon.mp3",
+                evening: "good_evening.mp3"
+            },
+            telugu: {
+                morning: "good_morning_tel.mp3",
+                afternoon: "good_afternoon_tel.mp3",
+                evening: "good_evening_tel.mp3"
+            }
+        };
+
+        function getTimeBasedGreeting(language) {
+            const currentHours = new Date().getHours();
+            if (currentHours >= 5 && currentHours < 12) {
+                return audioGreetings[language].morning;
+            } else if (currentHours >= 12 && currentHours < 18) {
+                return audioGreetings[language].afternoon;
+            } else {
+                return audioGreetings[language].evening;
+            }
+        }
+        function updateTimeBox() {
+            const timeBox = document.getElementById("time-box");
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+            timeBox.textContent = formattedTime;
+            setTimeout(updateTimeBox, 1000);
+        }
+
+        let shouldPlayGreeting = false; // Control variable for audio playback
+
+        function changeLanguage(language) {
+            // Save selected language in localStorage
+            localStorage.setItem("preferredLanguage", language);
+
+            // Transliterate the navigation links
+            document.querySelectorAll("nav ul li a b").forEach((link, index) => {
+                const text = originalText.navLinks[index];
+                link.textContent = transliteration[language][text] || text;
+            });
+
+            // Transliterate the title text
+            const titleText = document.getElementById("title-text");
+            titleText.textContent = transliteration[language][originalText.title] || originalText.title;
+
+            // Change greeting audio source
+            const greetingAudio = document.getElementById('greetingAudio');
+            greetingAudio.src = getTimeBasedGreeting(language);
+
+            // Enable audio playback only for subsequent slideshow clicks
+            shouldPlayGreeting = true;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
+            document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
+            changeLanguage(savedLanguage);
+        });
+
+        function playGreeting() {
+            if (shouldPlayGreeting) {
+                const language = document.querySelector('input[name="language"]:checked').value;
+                const greetingAudio = document.getElementById('greetingAudio');
+                greetingAudio.src = getTimeBasedGreeting(language);
+                greetingAudio.play();
+            }
+        }
+
+        function updateDateBox() {
+            const dateBox = document.getElementById("date-box");
+            const now = new Date();
+            const options = { weekday: "long", year: "numeric", month: "short", day: "numeric" };
+            const formattedDate = now.toLocaleDateString("en-US", options);
+            dateBox.textContent = formattedDate;
+        }
+
+        // Call the function on page load
+        document.addEventListener("DOMContentLoaded", updateDateBox);
+
+        // Attach click event listeners to slideshow images
+        slides.forEach((slide) => {
+            slide.addEventListener('click', playGreeting);
+        });
+
+        // Default language setup
+        changeLanguage('english');
+    </script>
+
+</body>
+</html>

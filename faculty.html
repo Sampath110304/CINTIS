@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty | EEE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<style>
+    .language-box {
+        display:none;
+    }
+
+    .language-box label {
+        display:none;
+    }
+
+    nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        color: white;
+    }
+
+    .language-box input[type="radio"] {
+        display:none;
+    }
+
+    .grid-item {
+        display: flex;
+        align-items: center;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .grid-item img {
+        width: 100px;
+        border-radius: 10px;
+        margin-right: 15px;
+    }
+
+    .grid-item h3 {
+        margin: 2;
+        margin-left: 65px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .grid-item p {
+        margin: 5px 0;
+        margin-left: 65px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .grid-item:hover {
+        background-color: lightgreen;
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    .grid-item.active {
+        background-color: #d1e7dd;
+        border: 2px solid #0f5132;
+    }
+
+    .back-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Poppins';
+        }
+</style>
+<body>
+    <header>
+        <div class="language-box">
+            <label>
+                <input type="radio" name="language" id="englishRadio" value="english" checked onclick="changeLanguage('english')">
+            </label>
+            <label>
+                <input type="radio" name="language" id="teluguRadio" value="telugu" onclick="changeLanguage('telugu')">
+            </label>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b class="translatable">Home</b></a></li>
+                <li><a href="about.html"><b class="translatable">Department</b></a></li>
+                <li><a href="faculty.html"><b class="translatable">Faculty</b></a></li>
+                <li><a href="attendance.html"><b class="translatable">R&D</b></a></li>
+                <li><a href="labs.html"><b class="translatable">Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b class="translatable">Placements</b></a></li>
+                <li><a href="General.html"><b class="translatable">Route Map</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b class="translatable"> ← Home </b></button>
+        <h2 style="text-align: center;" class="translatable">PRINCIPAL & HEAD OF EEE</h2>
+        <div class="grid">
+            <div class="grid-item" onclick="handleGridItemClick('principal')" style="background-color: lightyellow;">
+                <img src="principal.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                    <h3 class="translatable">Dr. K. Sivaji Babu</h3>
+                     <p class="translatable">PRINCIPAL</p>
+                     <p class="translatable">Room No: 102</p>
+                      <p class="translatable">Contact No: 8662581699</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('hod')" style="background-color: lightyellow;"">
+                <img src="hod.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                    <h3 class="translatable">Dr.Ch.Padmanabha Raju</h3>
+                     <p class="translatable">Professor & HoD</p>
+                     <p class="translatable">Room No: 132</p>
+                      <p class="translatable">Contact No: 9246400881</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h2 style="text-align: center;" class="translatable">Faculty</h2>
+        <div class="grid">
+            <!-- Repeat for 20 faculty members -->
+            <div class="grid-item" onclick="handleGridItemClick('ragaleela')">
+                <img src="ragaleela.png" alt="Faculty Image" style="width:100px">
+                <div>
+                    <h3 class="translatable">Dr. D. Ragaleela</h3>
+                     <p class="translatable">Sr. Assistant Professor</p>
+                     <p class="translatable">Room No: 135</p>
+                      <p class="translatable">Contact No: 9949418868</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('lenin')">
+                <img src="lenin.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Dr. K. Lenin</h3>
+                 <p class="translatable">Professor</p>
+                 <p class="translatable">Room No: 238</p>
+                  <p class="translatable">Contact No: 9080574470</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('ramesh')">
+                <img src="ramesh.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Dr. M.V. Ramesh</h3>
+                 <p class="translatable">Associate Professor</p>
+                 <p class="translatable">Room No: 240</p>
+                  <p class="translatable">Contact No: 9866599925</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('kumar')">
+                <img src="kumar.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Dr. C. Kumar</h3>
+                 <p class="translatable">Associate Professor</p>
+                 <p class="translatable">Room No: 133</p>
+                  <p class="translatable">Contact No: 9490958225</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('vjanand')">
+                <img src="vjanand.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Dr. N. Vijaya Anand</h3>
+                 <p class="translatable">Associate Professor</p>
+                 <p class="translatable">Room No: 248</p>
+                  <p class="translatable">Contact No: 9491862037</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('hemalatha')">
+                <img src="hemalatha.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Ms. J. Hema Latha</h3>
+                 <p class="translatable">Sr. Assistant Professor</p>
+                 <p class="translatable">Room No: 342</p>
+                  <p class="translatable">Contact No: 9493488596</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('swathi')">
+                <img src="swathi.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Dr. R.Swathi</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 243</p>
+                  <p class="translatable">Contact No: 9703074790</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('baddu')">
+                <img src="baddu.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Dr. B. Baddu Naik</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 259</p>
+                  <p class="translatable">Contact No: 9490701081</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('bhavana')">
+                <img src="bhavana.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Ms. K. Bhavana</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 241</p>
+                  <p class="translatable">Contact No: 9966953378</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('sgl')">
+                <img src="sgl.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Ms. V. Sai Geetha Lakshmi</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 244</p>
+                  <p class="translatable">Contact No: 9030606464</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('madhavi')">
+                <img src="madhavi.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Ms. G. Madhavi</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 245</p>
+                  <p class="translatable">Contact No: 8985815736</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('hemanth')">
+                <img src="hemanth.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Mr. M. Hemanth Sai</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 259</p>
+                  <p class="translatable">Contact No: 9052176170</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('mohan')">
+                <img src="mohan.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Mr. B. Mohan</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 268</p>
+                  <p class="translatable">Contact No: 9701742364</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('seshu')">
+                <img src="seshu.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Mr. M. Seshu</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 251</p>
+                  <p class="translatable">Contact No: 9959790083</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('balasaibabu')">
+                <img src="balasaibabu.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Mr. B. Bala Sai Babu</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 251</p>
+                 <p class="translatable">Contact No: 9966496635</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('devikarani')">
+                <img src="devikarani.png" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Ms. M. Devika Rani</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 244</p>
+                 <p class="translatable">Contact No: 9000218909</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('tsr')">
+                <img src="tsr.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Mr. T. Srinivasa Rao</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 268</p>
+                 <p class="translatable">Contact No: 9014340021</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('krnkr')">
+                <img src="krnkr.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Mr.Patchala Karunakar</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 268</p>
+                 <p class="translatable">Contact No: 7396459057</p>
+                </div>
+            </div>
+            <div class="grid-item" onclick="handleGridItemClick('harika')">
+                <img src="harika.jpg" alt="Faculty Image" style="width:100px">
+                <div>
+                <h3 class="translatable">Ms. V. Harika</h3>
+                 <p class="translatable">Assistant Professor</p>
+                 <p class="translatable">Room No: 245</p>
+                 <p class="translatable">Contact No: 9491961664</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <audio id="thankYouAudioEnglish" src="thank_you.mp3" preload="auto"></audio>
+    <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
+    <audio id="principalAudioEnglish" src="principal.mp3" preload="auto"></audio>
+    <audio id="principalAudioTelugu" src="principal_telugu.mp3" preload="auto"></audio>
+    <audio id="hodAudioEnglish" src="hod_telugu.mp3" preload="auto"></audio>
+    <audio id="hodAudioTelugu" src="hod.mp3" preload="auto"></audio>
+    <audio id="ragaleelaAudioTelugu" src="ragaleela_telugu.mp3" preload="auto"></audio>
+    <audio id="ragaleelaAudioEnglish" src="ragaleela.mp3" preload="auto"></audio>
+    <audio id="leninAudioTelugu" src="lenin_telugu.mp3" preload="auto"></audio>
+    <audio id="leninAudioEnglish" src="lenin.mp3" preload="auto"></audio>
+    <audio id="harikaAudioTelugu" src="harika_telugu.mp3" preload="auto"></audio>
+    <audio id="harikaAudioEnglish" src="harika.mp3" preload="auto"></audio>
+    <audio id="krnkrAudioTelugu" src="karunakar_telugu.mp3" preload="auto"></audio>
+    <audio id="krnkrAudioEnglish" src="karunakar.mp3" preload="auto"></audio>
+    <audio id="tsrAudioTelugu" src="srinivasa_telugu.mp3" preload="auto"></audio>
+    <audio id="tsrAudioEnglish" src="srinivasa.mp3" preload="auto"></audio>
+    <audio id="devikaraniAudioTelugu" src="devikarani_telugu.mp3" preload="auto"></audio>
+    <audio id="devikaraniAudioEnglish" src="devikarani.mp3" preload="auto"></audio>
+    <audio id="balasaibabuAudioTelugu" src="balasaibabu_telugu.mp3" preload="auto"></audio>
+    <audio id="balasaibabuAudioEnglish" src="saibabu.mp3" preload="auto"></audio>
+    <audio id="seshuAudioTelugu" src="seshu_telugu.mp3" preload="auto"></audio>
+    <audio id="seshuAudioEnglish" src="seshu.mp3" preload="auto"></audio>
+    <audio id="mohanAudioTelugu" src="mohan_telugu.mp3" preload="auto"></audio>
+    <audio id="mohanAudioEnglish" src="mohan.mp3" preload="auto"></audio>
+    <audio id="hemanthAudioTelugu" src="hemanth_telugu.mp3" preload="auto"></audio>
+    <audio id="hemanthAudioEnglish" src="hemanth.mp3" preload="auto"></audio>
+    <audio id="madhaviAudioTelugu" src="madhavi_telugu.mp3" preload="auto"></audio>
+    <audio id="madhaviAudioEnglish" src="madhavi.mp3" preload="auto"></audio>
+    <audio id="sglAudioTelugu" src="saigeetha_telugu.mp3" preload="auto"></audio>
+    <audio id="sglAudioEnglish" src="saigeetha.mp3" preload="auto"></audio>
+    <audio id="bhavanaAudioTelugu" src="bhavana_telugu.mp3" preload="auto"></audio>
+    <audio id="bhavanaAudioEnglish" src="bhavana (2).mp3" preload="auto"></audio>
+    <audio id="badduAudioTelugu" src="baddu_telugu.mp3" preload="auto"></audio>
+    <audio id="badduAudioEnglish" src="baddu.mp3" preload="auto"></audio>
+    <audio id="swathiAudioTelugu" src="swathi_telugu.mp3" preload="auto"></audio>
+    <audio id="swathiAudioEnglish" src="swathi.mp3" preload="auto"></audio>
+    <audio id="hemalathaAudioTelugu" src="hemaltha_telugu.mp3" preload="auto"></audio>
+    <audio id="hemalathaAudioEnglish" src="hemalatha.mp3" preload="auto"></audio>
+    <audio id="vjanandAudioTelugu" src="vijayaanand_telugu.mp3" preload="auto"></audio>
+    <audio id="vjanandAudioEnglish" src="vijayanand.mp3" preload="auto"></audio>
+    <audio id="kumarAudioTelugu" src="kummar_telugu.mp3" preload="auto"></audio>
+    <audio id="kumarAudioEnglish" src="kumar.mp3" preload="auto"></audio>
+    <audio id="rameshAudioTelugu" src="ramesh_telugu.mp3" preload="auto"></audio>
+    <audio id="rameshAudioEnglish" src="ramesh.mp3" preload="auto"></audio>
+    <script> 
+    let currentAudio = null;
+    const englishToTelugu = {
+                "Home": "హోమ్",
+                "Department": "డిపార్ట్మెంట్",
+                "Faculty": "ప్రొఫెసర్స్",
+                "R&D": "రీసెర్చ్",
+                "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+                "Placements": "ప్లేస్మెంట్స్",
+                "Route Map": "రూట్ మ్యాప్",
+                " ← Home ": " ← హోమ్ ",
+                "Dr.Ch.Padmanabha Raju": "Dr. Ch.పద్మనాభరాజు",
+                "Professor & HoD": "ప్రొఫెసర్ & హెచ్‌.ఒడీ",
+                "Room No: 132": "రూమ్ నో: 132",
+                "Contact No: 9246400881": "ఫోన్ : 9246400881",
+                "Dr. D. Ragaleela": "Dr. D. రాగలీల",
+                "Sr. Assistant Professor": "సీనియర్ అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 135": "రూమ్ నో: 135",
+                "Contact No: 9949418868": "ఫోన్ : 9949418868",
+                "Dr. K. Lenin": "Dr. కే. లెనిన్",
+                "Professor": "ప్రొఫెసర్",
+                "Room No: 238": "రూమ్ నో: 238",
+                "Contact No: 9080574470": "ఫోన్ : 9080574470",
+                "Dr. M.V. Ramesh": "Dr. ఎం.వి. రామేశ్",
+                "Associate Professor": "అసోసియేట్  ప్రొఫెసర్",
+                "Room No: 240": "రూమ్ నో: 240",
+                "Contact No: 9866599925": "ఫోన్ : 9866599925",
+                "Dr. C. Kumar": "Dr. C. కుమార్",
+                "Associate Professor": "అసోసియేట్  ప్రొఫెసర్",
+                "Room No: 133": "రూమ్ నో: 133",
+                "Contact No: 9490958225": "ఫోన్ : 9490958225",
+                "Dr. N. Vijaya Anand": "Dr.N. విజయ ఆనంద్",
+                "Associate Professor": "అసోసియేట్  ప్రొఫెసర్",
+                "Room No: 248": "రూమ్ నో: 248",
+                "Contact No: 9491862037": "ఫోన్ : 9491862037",
+                "Ms. J. Hema Latha": "Ms. J. హేమలత",
+                "Sr. Assistant Professor": "సీనియర్ అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 342": "రూమ్ నో: 342",
+                "Contact No: 9493488596": "ఫోన్ : 9493488596",
+                "Dr. R.Swathi": "Dr. R. స్వాతి",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 243": "రూమ్ నో: 243",
+                "Contact No: 9703074790": "ఫోన్ : 9703074790",
+                "Dr. B. Baddu Naik": "Dr. B. బడ్డు నాయక్",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 259": "రూమ్ నో: 259",
+                "Contact No: 9490701081": "ఫోన్ : 9490701081",
+                "Ms. K. Bhavana": "Ms. K. భావన",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 241": "రూమ్ నో: 241",
+                "Contact No: 9966953378": "ఫోన్ : 9966953378",
+                "Ms. V. Sai Geetha Lakshmi": "Ms. V. సాయి గీతా లక్ష్మీ",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 244": "రూమ్ నో: 244",
+                "Contact No: 9030606464": "ఫోన్ : 9030606464",
+                "Ms. G. Madhavi": "Ms. G. మాధవీ",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 245": "రూమ్ నో: 245",
+                "Contact No: 8985815736": "ఫోన్ : 8985815736",
+                "Mr. M. Hemanth Sai": "Mr. M. హేమంత్ సాయి",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 259": "రూమ్ నో: 259",
+                "Contact No: 9052176170": "ఫోన్ : 9052176170",
+                "Mr. B. Mohan": "Mr. B. మోహన్",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 268": "రూమ్ నో: 268",
+                "Contact No: 9701742364": "ఫోన్ : 9701742364",
+                "Mr. M. Seshu": "Mr. M. శేషు",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 251": "రూమ్ నో: 251",
+                "Contact No: 9959790083": "ఫోన్ : 9959790083",
+                "Mr. B. Bala Sai Babu": "Mr. B. బాల సాయిబాబు",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 251": "రూమ్ నో: 251",
+                "Contact No: 9966496635": "ఫోన్ : 9966496635",
+                "Ms. M. Devika Rani": "Ms. M. దేవికా రాణి",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 244": "రూమ్ నో: 244",
+                "Contact No: 9000218909": "ఫోన్ : 9000218909",
+                "Mr. T. Srinivasa Rao": "Mr. T. శ్రీనివాస రావు",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 268": "రూమ్ నో: 268",
+                "Contact No: 9849914184": "ఫోన్ : 9849914184",
+                "Mr.Patchala Karunakar":"Mr.P. కరుణాకర్",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 268": "రూమ్ నో: 268",
+                "Contact No: 7396459057":"ఫోన్ : 7396459057",
+                "Ms. V. Harika":"Ms. V. హారిక",
+                "Assistant Professor": "అసిస్టెంట్ ప్రొఫెసర్",
+                "Room No: 245": "రూమ్ నో: 245",
+                "Contact No: 9491961664":"ఫోన్ : 9491961664",
+                "Dr. K. Sivaji Babu":"Dr. K. శివాజీ బాబు",
+                "PRINCIPAL":"ప్రిన్సిపాల్",
+                "Room No: 102":"రూమ్ నో: 102",
+                "Contact No: 8662581699":"ఫోన్ : 8662581699",
+                "PRINCIPAL & HEAD OF EEE":"ప్రిన్సిపాల్ & హెడ్ అఫ్ EEE"
+            };
+            const teluguToEnglish =  {
+                "హోమ్": "Home",
+                "డిపార్ట్మెంట్": "Department",
+                "ప్రొఫెసర్స్": "Faculty",
+                "రీసెర్చ్": "R&D",
+                "లాబ్స్ & క్లాస్రూమ్స్": "Labs & Classrooms",
+                "ప్లేస్మెంట్స్": "Placements",
+                "రూట్ మ్యాప్": "Route Map",
+                " ← హోమ్ ": " ← Home ",
+                "Dr. Ch.పద్మనాభరాజు": "Dr.Ch.Padmanabha Raju",
+                "ప్రొఫెసర్ & హెచ్‌.ఒడీ": "Professor & HoD",
+                "రూమ్ నో: 132": "Room No: 132",
+                "ఫోన్ : 9246400881": "Contact No: 9246400881",
+                "Dr. D. రాగలీల": "Dr. D. Ragaleela",
+                "సీనియర్ అసిస్టెంట్ ప్రొఫెసర్": "Sr. Assistant Professor",
+                "రూమ్ నో: 135": "Room No: 135",
+                "ఫోన్ : 9949418868": "Contact No: 9949418868",
+                "Dr. కే. లెనిన్": "Dr. K. Lenin",
+                "ప్రొఫెసర్": "Professor",
+                "రూమ్ నో: 238": "Room No: 238",
+                "ఫోన్ : 9080574470": "Contact No: 9080574470",
+                "Dr. M.V. రామేశ్": "Dr. M.V. Ramesh",
+                "అసోసియేట్  ప్రొఫెసర్": "Associate Professor",
+                "రూమ్ నో: 240": "Room No: 240",
+                "ఫోన్ : 9866599925": "Contact No: 9866599925",
+                "Dr. C. కుమార్": "Dr. C. Kumar",
+                "అసోసియేట్  ప్రొఫెసర్": "Associate Professor",
+                "రూమ్ నో: 133": "Room No: 133",
+                "ఫోన్ : 9490958225": "Contact No: 9490958225",
+                "Dr.N. విజయ ఆనంద్": "Dr. N. Vijaya Anand",
+                "అసోసియేట్  ప్రొఫెసర్": "Associate Professor",
+                "రూమ్ నో: 248": "Room No: 248",
+                "ఫోన్ : 9491862037": "Contact No: 9491862037",
+                "Ms. J. హేమలత": "Ms. J. Hema Latha",
+                "సీనియర్ అసిస్టెంట్ ప్రొఫెసర్": "Sr. Assistant Professor",
+                "రూమ్ నో: 342": "Room No: 342",
+                "ఫోన్ : 9493488596": "Contact No: 9493488596",
+                "Dr. R. స్వాతి": "Dr. R.Swathi",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 243": "Room No: 243",
+                "ఫోన్ : 9703074790": "Contact No: 9703074790",
+                "Dr. B. బడ్డు నాయక్": "Dr. B. Baddu Naik",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 259": "Room No: 259",
+                "ఫోన్ : 9490701081": "Contact No: 9490701081",
+                "Ms. K. భావన": "Ms. K. Bhavana",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 241": "Room No: 241",
+                "ఫోన్ : 9966953378": "Contact No: 9966953378",
+                "Ms. V. సాయి గీతా లక్ష్మీ": "Ms. V. Sai Geetha Lakshmi",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 244": "Room No: 244",
+                "ఫోన్ : 9030606464": "Contact No: 9030606464",
+                "Ms. G. మాధవీ": "Ms. G. Madhavi",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 245": "Room No: 245",
+                "ఫోన్ : 8985815736": "Contact No: 8985815736",
+                "Mr. M. హేమంత్ సాయి": "Mr. M. Hemanth Sai",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 259": "Room No: 259",
+                "ఫోన్ : 9052176170": "Contact No: 9052176170",
+                "Mr. B. మోహన్": "Mr. B. Mohan",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 268": "Room No: 268",
+                "ఫోన్ : 9701742364": "Contact No: 9701742364",
+                "Mr. M. శేషు": "Mr. M. Seshu",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 251": "Room No: 251",
+                "ఫోన్ : 9959790083": "Contact No: 9959790083",
+                "Mr. B. బాల సాయిబాబు": "Mr. B. Bala Sai Babu",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 251": "Room No: 251",
+                "ఫోన్ : 9966496635": "Contact No: 9966496635",
+                "Ms. M. దేవికా రాణి": "Ms. M. Devika Rani",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 244": "Room No: 244",
+                "ఫోన్ : 9000218909": "Contact No: 9000218909",
+                "Mr. T. శ్రీనివాస రావు": "Mr. T. Srinivasa Rao",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 268": "Room No: 268",
+                "ఫోన్ : 9849914184": "Contact No: 9849914184",
+                "Mr.P. కరుణాకర్": "Mr.Patchala Karunakar",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 268": "Room No: 268",
+                "ఫోన్ : 7396459057":"Contact No: 7396459057",
+                "Ms. V. హారిక": "Ms. V. Harika",
+                "అసిస్టెంట్ ప్రొఫెసర్": "Assistant Professor",
+                "రూమ్ నో: 245": "Room No: 245",
+                "ఫోన్ : 9491961664": "Contact No: 9491961664",
+                "Dr. K. శివాజీ బాబు":"Dr. K. Sivaji Babu",
+                "ప్రిన్సిపాల్":"PRINCIPAL",
+                "రూమ్ నో: 102":"Room No: 102",
+                "ఫోన్ : 8662581699":"Contact No: 8662581699",
+                "ప్రిన్సిపాల్ & హెడ్ అఫ్ EEE":"PRINCIPAL & HEAD OF EEE"
+            };
+
+function playAudio(audioId) {
+    if (currentAudio && currentAudio.id === audioId) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    } else {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        currentAudio = document.getElementById(audioId);
+        currentAudio.play();
+    }
+}
+
+function handleGridItemClick(role) {
+    const language = localStorage.getItem("preferredLanguage") || "english";
+    const audioId = `${role}Audio${language.charAt(0).toUpperCase() + language.slice(1)}`;
+    playAudio(audioId);
+}
+
+function toggleAudio(audioId) {
+    if (currentAudio && currentAudio.id === audioId) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    } else {
+        playAudio(audioId);
+    }
+}
+
+function playThankYouAudio() {
+    const language = localStorage.getItem("preferredLanguage") || "english";
+    const audioId = language === "telugu" ? "thankYouAudioTelugu" : "thankYouAudioEnglish";
+
+    toggleAudio(audioId);
+
+    setTimeout(() => {
+        localStorage.setItem("preferredLanguage", "english");
+        window.location.href = "index.html";
+    }, 3000); // Wait for 3 seconds before redirect
+}
+
+function transliterateText(text, direction) {
+    if (direction === 'english-to-telugu') {
+        return englishToTelugu[text] || text; // English to Telugu
+    } else if (direction === 'telugu-to-english') {
+        return teluguToEnglish[text] || text; // Telugu to English
+    }
+    return text;
+}
+
+// Function to change language
+function changeLanguage(language) {
+    const elements = document.querySelectorAll('.translatable');
+    localStorage.setItem("preferredLanguage", language);
+    elements.forEach(element => {
+        if (language === 'english') {
+            element.textContent = transliterateText(element.textContent, 'telugu-to-english'); // Convert to English
+        } else if (language === 'telugu') {
+            element.textContent = transliterateText(element.textContent, 'english-to-telugu'); // Convert to Telugu
+        }
+    });
+
+    const backBtn = document.getElementById("backBtn");
+    backBtn.innerHTML = `<b>${transliteration[language][" ← Home "] || " ← హోమ్  "}</b>`;
+}
+
+// Event listeners for radio buttons
+document.getElementById('englishRadio').addEventListener('change', () => {
+    if (document.getElementById('englishRadio').checked) {
+        changeLanguage('english'); // Convert text to English
+    }
+});
+
+document.getElementById('teluguRadio').addEventListener('change', () => {
+    if (document.getElementById('teluguRadio').checked) {
+        changeLanguage('telugu'); // Convert text to Telugu
+    }
+});
+
+function applySavedLanguage() {
+    const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
+    document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
+    changeLanguage(savedLanguage);
+}
+
+// Apply the saved language on page load
+document.addEventListener('DOMContentLoaded', applySavedLanguage);
+
+    </script>
+</body>
+</html>

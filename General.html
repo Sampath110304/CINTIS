@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs & Classrooms | EEE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
+
+    .grid-item {
+        display: none;
+        width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: lightgreen;
+        text-align: center;
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    .audio-section {
+        margin-top: 10px;
+        margin-left: 300px;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        width: fit-content;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .audio-section p {
+        margin: 0;
+        font-weight: bold;
+    }
+    .audio-section label {
+        margin: 0 10px;
+        text-align: center;
+    }
+    .dropdown {
+        display: block;
+        margin: 20px auto;
+        padding: 10px;
+        width: 40%;
+        font-size: 16px;
+    }
+    nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        color: white;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        color: white;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .back-btn {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        text-align: left;
+        font-family: 'Poppins';
+    }
+    .back-btn:hover {
+        background-color: #0056b3;
+    }
+    .language-box {
+        display:none;
+    }
+
+    .language-box label {
+        display:none;
+    }
+    .language-box input[type="radio"] {
+        display:none;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="language-box">
+            <label>
+                <input type="radio" name="language" id="englishRadio" value="english" checked onclick="setLanguage('english')"> English
+            </label>
+            <label>
+                <input type="radio" name="language" id="teluguRadio" value="telugu" onclick="setLanguage('telugu')"> తెలుగు
+            </label>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b class="translatable">Home</b></a></li>
+                <li><a href="about.html"><b class="translatable">Department</b></a></li>
+                <li><a href="faculty.html"><b class="translatable">Faculty</b></a></li>
+                <li><a href="attendance.html"><b class="translatable">R&D</b></a></li>
+                <li><a href="labs.html"><b class="translatable">Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b class="translatable">Placements</b></a></li>
+                <li><a href="General.html"><b class="translatable">Route Map</b></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <button class="back-btn" id="backBtn" onclick="playThankYouAudio()">
+            <b class="translatable">← Home</b>
+        </button>
+        <br><br>
+
+        <h2 style="text-align: center;" class="translatable">Where do you want to go ??</h2>
+
+        <select id="dropdown" class="dropdown" style="font-family: 'Poppins';" onchange="filterGridItems()">
+            <option value="" class="translatable">Select a room...</option>
+            <option value="Central Library" class="translatable">Central Library</option>
+            <option value="Ground Floor Seminar Hall" class="translatable">Ground Floor Seminar Hall</option>
+            <option value="Administrative Office" class="translatable">Administrative Office</option>
+            <option value="Books & Stationery" class="translatable">Books & Stationery</option>
+            <option value="Gents Washroom" class="translatable">Gents Washroom</option>
+            <option value="Ladies Waiting Hall" class="translatable">Ladies Waiting Hall</option>
+            <option value="Auditorium" class="translatable">Auditorium</option>
+            <option value="Gym" class="translatable">Gym</option>
+        </select>
+
+        <div class="grid" id="grid">
+            <!-- Default Item -->
+            <div class="grid-item" id="defaultItem" style="display: block;">
+                <h3 class="translatable">General Route Map</h3>
+                <img src="ROUTE_map.png" alt="General Route Map">
+            </div>
+
+            <!-- Room Items -->
+            <div class="grid-item" data-name="Central Library" onclick="playAudio('audio1')">
+                <h3 class="translatable">Central Library</h3>
+                <p class="translatable">Room No: 129</p>
+                <img src="library_route.jpg" alt="Library Route">
+            </div>
+            <div class="grid-item" data-name="Administrative Office" onclick="playAudio('audio2')">
+                <h3 class="translatable">Administrative Office</h3>
+                <p class="translatable">Room No: 101</p>
+                <img src="adm_office.png" alt="Administrative Office">
+            </div>
+
+            <!-- Books & Stationery -->
+            <div class="grid-item" data-name="Books & Stationery" onclick="playAudio('audio3')">
+                <h3 class="translatable">Books & Stationery</h3>
+                <p class="translatable">Room No: 112</p>
+                <img src="stationery.png" alt="Books & Stationery">
+            </div>
+
+            <!-- Ground Floor Seminar Hall -->
+            <div class="grid-item" data-name="Ground Floor Seminar Hall" onclick="playAudio('audio4')">
+                <h3 class="translatable">Ground Floor Seminar Hall</h3>
+                <img src="semi_hall.png" alt="Ground Floor Seminar Hall">
+            </div>
+
+            <!-- Gents Washroom -->
+            <div class="grid-item" data-name="Gents Washroom" onclick="playAudio('audio5')">
+                <h3 class="translatable">Gents Washroom</h3>
+                <img src="gents_wr.png" alt="Gents Washroom">
+            </div>
+
+            <!-- Ladies Waiting Hall -->
+            <div class="grid-item" data-name="Ladies Waiting Hall" onclick="playAudio('audio6')">
+                <h3 class="translatable">Ladies Waiting Hall</h3>
+                <p class="translatable">Room No: 114</p>
+                <img src="ladies_wr.png" alt="Ladies Washroom">
+            </div>
+
+            <!-- Auditorium -->
+            <div class="grid-item" data-name="Auditorium" onclick="playAudio('audio7')">
+                <h3 class="translatable">Auditorium</h3>
+                <img src="auditorium.jpg" alt="Auditorium">
+            </div>
+
+            <!-- Gym -->
+            <div class="grid-item" data-name="Gym" onclick="playAudio('audio8')">
+                <h3 class="translatable">Gym</h3>
+                <p class="translatable">Room No: 148</p>
+                <img src="gym.jpg" alt="Gym">
+            </div>
+        </div>
+    </main>
+
+    <audio id="audio1" src="library_eng.mp3" preload="auto"></audio>
+    <audio id="audio1_telugu" src="library_tel.mp3" preload="auto"></audio>
+    <audio id="audio2" src="admin_eng.mp3" preload="auto"></audio>
+    <audio id="audio2_telugu" src="admin_tel.mp3" preload="auto"></audio>
+    <audio id="audio3" src="stationery_eng.mp3" preload="auto"></audio>
+    <audio id="audio3_telugu" src="stationery_tel.mp3" preload="auto"></audio>
+    <audio id="audio4" src="seminar_hall_eng.mp3" preload="auto"></audio>
+    <audio id="audio4_telugu" src="seminar_hall_tel.mp3" preload="auto"></audio>
+    <audio id="audio5" src="gents_waiting_hall_eng.mp3" preload="auto"></audio>
+    <audio id="audio5_telugu" src="gents_waiting_hall_tel.mp3" preload="auto"></audio>
+    <audio id="audio6" src="ladies_waiting_hall_eng.mp3" preload="auto"></audio>
+    <audio id="audio6_telugu" src="ladies_waiting_hall_tel.mp3" preload="auto"></audio>
+    <audio id="audio7" src="auditorium_eng.mp3" preload="auto"></audio>
+    <audio id="audio7_telugu" src="auditorium_tel.mp3" preload="auto"></audio>
+    <audio id="audio8" src="gym_eng.mp3" preload="auto"></audio>
+    <audio id="audio8_telugu" src="gym_tel.mp3" preload="auto"></audio>
+    <audio id="thankYouAudio" src="thank_you.mp3" preload="auto"></audio>
+    <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
+
+    <script>
+        let currentAudio = null;
+
+        // Filter grid items based on dropdown selection
+        function filterGridItems() {
+            const selectedValue = document.getElementById('dropdown').value;
+            const gridItems = document.querySelectorAll('.grid-item');
+            const defaultItem = document.getElementById('defaultItem');
+
+            let hasSelection = false;
+
+            gridItems.forEach(item => {
+                if (selectedValue === item.dataset.name) {
+                    item.style.display = 'block';
+                    hasSelection = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            defaultItem.style.display = hasSelection ? 'none' : 'block';
+
+            // Save selected value to localStorage
+            localStorage.setItem('selectedRoom', selectedValue);
+        }
+
+        // Play audio based on selection
+        function playAudio(audioId) {
+            const language = localStorage.getItem("preferredLanguage") || "english";
+            const langSuffix = language === "telugu" ? "_telugu" : "";
+            const audioElement = document.getElementById(audioId + langSuffix);
+            
+            if (audioElement === currentAudio) {
+                if (!audioElement.paused) {
+                    audioElement.pause();
+                    currentAudio = null;
+                } else {
+                    audioElement.play();
+                }
+            } else {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+                currentAudio = audioElement;
+                audioElement.play();
+            }
+        }
+
+        // Handle thank you audio and redirect
+        function playThankYouAudio() {
+            const language = localStorage.getItem("preferredLanguage") || "english";
+            const audioId = language === "telugu" ? "thankYouAudioTelugu" : "thankYouAudio";
+            
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            currentAudio = document.getElementById(audioId);
+            currentAudio.play();
+            setTimeout(() => {
+                localStorage.setItem("preferredLanguage", "english"); // Reset language to English
+                window.location.href = "index.html";
+            }, 3000); // Wait for 3 seconds before redirect
+        }
+
+        // Set the language preference
+        function setLanguage(language) {
+            localStorage.setItem("preferredLanguage", language);
+            changeLanguage(language);
+        }
+
+        // Change language based on preference
+        function changeLanguage(language) {
+    const translations = {
+        "english": {
+            "Home": "Home",
+            "Department": "Department",
+            "Faculty": "Faculty",
+            "R&D": "R&D",
+            "Labs & Classrooms": "Labs & Classrooms",
+            "Placements": "Placements",
+            "Route Map": "Route Map",
+            "← Home": "← Home",
+            "Where do you want to go ??": "Where do you want to go ??",
+            "General Route Map": "General Route Map",
+            "Central Library": "Central Library",
+            "Room No: 129": "Room No: 129",
+            "Books & Stationery": "Books & Stationery",
+            "Room No: 112": "Room No: 112",
+            "Ground Floor Seminar Hall": "Ground Floor Seminar Hall",
+            "Gents Washroom": "Gents Washroom",
+            "Ladies Waiting Hall": "Ladies Waiting Hall",
+            "Auditorium": "Auditorium",
+            "Gym": "Gym"
+        },
+        "telugu": {
+            "Home": "హోమ్",
+            "Department": "డిపార్ట్మెంట్",
+            "Faculty": "ప్రొఫెసర్స్",
+            "R&D": "రీసెర్చ్",
+            "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+            "Placements": "ప్లేస్మెంట్స్",
+            "Route Map": "రూట్ మ్యాప్",
+            "← Home": "← హోమ్",
+            "Where do you want to go ??": "మీరు ఎక్కడికి వెళ్లాలని అనుకుంటున్నారు ??",
+            "General Route Map": "జనరల్ రూట్ మ్యాప్",
+            "Central Library": "సెంట్రల్ లైబ్రరీ",
+            "Ground Floor Seminar Hall": "గ్రౌండ్ ఫ్లోర్ సెమినార్ హాల్",
+            "Administrative Office": "అడ్మినిస్ట్రేటివ్ ఆఫీస్",
+            "Books & Stationery": "పుస్తకాలు & స్టేషనరీ",
+            "Gents Washroom": "జెంట్స్ వాష్రూమ్",
+            "Ladies Waiting Hall": "లేడీస్ వెయిటింగ్ హల్",
+            "Auditorium": "ఆడిటోరియం",
+            "Gym": "జిం",
+            "Select a room...": "రూమ్ ను ఎంచుకోండి",
+            "Room No: 129": "రూమ్ నం: 129",
+            "Room No: 101": "రూమ్ నం: 101",
+            "Room No: 112": "రూమ్ నం: 112",
+            "Room No: 114": "రూమ్ నం: 114"
+        }
+    };
+
+    // Apply translations
+    const translatableElements = document.querySelectorAll('.translatable');
+    translatableElements.forEach(element => {
+        const key = element.textContent.trim();
+        if (translations[language][key]) {
+            element.textContent = translations[language][key];
+        }
+    });
+}
+
+
+        window.onload = function () {
+            const preferredLanguage = localStorage.getItem("preferredLanguage") || "english";
+            setLanguage(preferredLanguage);
+        }
+    </script>
+</body>
+</html>

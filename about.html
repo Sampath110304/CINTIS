@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Department | EEE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <style>
+        .language-box {
+            display:none;
+        }
+
+        .language-box label {
+            display:none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            color: white;
+            position: relative; /* Makes the navigation bar stick to the top */
+            top: 0; /* Stick to the top of the viewport */
+            z-index: 1000; /* Ensures it stays above other content */
+            width: 100%;
+        }
+
+        .language-box input[type="radio"] {
+            display:none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            color: white;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Poppins';
+        }
+
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="language-box">
+            <label>
+                <input type="radio" name="language" value="english" onclick="changeLanguage('english')">
+            </label>
+            <label>
+                <input type="radio" name="language" value="telugu" onclick="changeLanguage('telugu')">
+            </label>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b>Home</b></a></li>
+                <li><a href="about.html"><b>Department</b></a></li>
+                <li><a href="faculty.html"><b>Faculty</b></a></li>
+                <li><a href="attendance.html"><b>R&D</b></a></li>
+                <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b>Placements</b></a></li>
+                <li><a href="General.html"><b>Route Map</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b>← Home</b></button>
+        <div class="section">
+            <h2 style="text-align: center; color: blue;">About the Department</h2>
+            <p style="text-align: justify;">
+                The Department of Electrical and Electronics Engineering (EEE) at PVPSIT is committed to providing quality education and fostering innovation. With a focus on academic excellence and industry readiness, the department offers comprehensive programs that cover the latest advancements in electrical and electronics engineering.
+            </p>
+            <p style="text-align: justify;">
+                Our dedicated faculty members and state-of-the-art facilities ensure that students receive hands-on experience and theoretical knowledge to excel in their careers. The department emphasizes research, development, and real-world applications to prepare students for the evolving challenges of the industry.
+            </p>
+        </div>
+        <div class="section">
+            <h2 style="text-align: center; color: blue;">Vision of the Department</h2>
+            <p style="text-align: center;">
+                To mould young and fresh minds into well-disciplined and competent engineers to excel in the field of Electrical & Electronics Engineering to cater to the industrial/societal needs and compete at a global level.
+            </p>
+        </div>
+        <div class="section">
+            <h2 style="text-align: center; color: blue;">Mission of the Department</h2>
+            <p style="text-align: justify;">
+                To produce competent and quality technical professionals with strong basics of electrical engineering principles and techniques.
+            </p>
+            <p style="text-align: justify;">
+                To facilitate the students to work with modern tools, state-of-the-art technologies, innovative research capabilities besides inculcating leadership abilities and ethical values.
+            </p>
+        </div>
+        <div class="section">
+            <h2 style="text-align: center; color: blue;">Program Educational Outcomes</h2>
+            <p style="text-align: justify;">
+                <b>PEO-I :</b> Have a strong foundation in engineering fundamentals, mathematics, basic sciences, humanities, and modern software tools with the ability to apply them to conceive, analyze, design, and implement solutions to problems in the electrical engineering field.
+            </p>
+            <p style="text-align: justify;">
+                <b>PEO-II :</b> Have a broad-based background to practice electrical engineering in the areas of control systems, machines, measurements, power systems, power electronics, and their applications in industry and government sectors meeting the growing expectations of stakeholders.
+            </p>
+            <p style="text-align: justify;">
+                <b>PEO-III :</b> Have requisite skills to excel in a multidisciplinary engineering environment with awareness of contemporary issues, professional responsibility, the impact of technology on society, and the need for lifelong learning.
+            </p>
+            <p style="text-align: justify;">
+                <b>PEO-IV :</b> Have an ability to pursue higher studies to meet the needs of global standards and participate in team-oriented, open-ended activities both as team members and as leaders with professional communication skills to compete in the global scenario.
+            </p>
+        </div>
+    </main>
+
+    <!-- Audio elements for different sections -->
+    <audio id="thankYouAudioEnglish" src="thank_you.mp3" preload="auto"></audio>
+    <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
+    <audio id="aboutAudio" src="about.mp3" preload="auto"></audio>
+    <audio id="visionAudio" src="vision.mp3" preload="auto"></audio>
+    <audio id="missionAudio" src="mission.mp3" preload="auto"></audio>
+
+    <script>
+        let currentAudio = null;
+
+        function playThankYouAudio() {
+            const language = localStorage.getItem("preferredLanguage") || "english";
+            const audioId = language === "telugu" ? "thankYouAudioTelugu" : "thankYouAudioEnglish";
+
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            currentAudio = document.getElementById(audioId);
+            currentAudio.play();
+            setTimeout(() => {
+                localStorage.setItem("preferredLanguage", "english"); // Reset language to English
+                window.location.href = "index.html";
+            }, 3000); 
+            // Wait for 3 seconds before redirect
+        }
+
+    function playAudio(audioId) {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    currentAudio = document.getElementById(audioId);
+    currentAudio.play();
+}
+
+function toggleAudio(audioId) {
+    if (currentAudio && currentAudio.id === audioId) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    } else {
+        playAudio(audioId);
+    }
+}
+
+// Update language switching and back button functionality as before
+// ...
+
+// Example usage of toggleAudio
+document.querySelectorAll('.section').forEach(section => {
+    section.addEventListener('click', () => {
+        let audioId;
+        switch (section.querySelector('h2').textContent.trim()) {
+            case "About the Department":
+                audioId = "aboutAudio";
+                break;
+            case "Vision of the Department":
+                audioId = "visionAudio";
+                break;
+            case "Mission of the Department":
+                audioId = "missionAudio";
+                break;
+            default:
+                return;
+        }
+        toggleAudio(audioId);
+    });
+});
+
+        const transliteration = {
+            telugu: {
+                "Home": "హోమ్",
+                "Department": "డిపార్ట్మెంట్",
+                "Faculty": "ప్రోఫెసర్స్",
+                "R&D": "రీసెర్చ్",
+                "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+                "Placements": "ప్లేస్మెంట్స్",
+                "Route Map": "రూట్ మ్యాప్",
+                "← Home ": "← హోమ్"
+            },
+            english: {
+                "హోమ్": "Home",
+                "డిపార్ట్మెంట్": "Department",
+                "ప్రోఫెసర్స్": "Faculty",
+                "రీసెర్చ్": "R&D",
+                "లాబ్స్ & క్లాస్రూమ్స్": "Labs & Classrooms",
+                "ప్లేస్మెంట్స్": "Placements",
+                "రూట్ మ్యాప్": "Route Map",
+                "← Home": "← Home"
+            }
+        };
+
+        function changeLanguage(language) {
+            localStorage.setItem("preferredLanguage", language);
+
+            // Change text of navigation links
+            const navLinks = document.querySelectorAll("nav ul li a b");
+            navLinks.forEach(link => {
+                link.textContent = transliteration[language][link.textContent] || link.textContent;
+            });
+
+            // Update "Back" button text
+            const backBtn = document.getElementById("backBtn");
+            backBtn.innerHTML = `<b>${transliteration[language]["← Home"] || "← హోమ్"}</b>`;
+        }
+
+        function applySavedLanguage() {
+            const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
+            document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
+            changeLanguage(savedLanguage);
+        }
+
+        // Apply the saved language on page load
+        document.addEventListener('DOMContentLoaded', applySavedLanguage);
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance | EEE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <style>
+        .language-box {
+        display:none;
+    }
+
+    .language-box label {
+        display:none;
+    }
+
+    nav {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            color: white;
+        }
+
+        .language-box input[type="radio"] {
+            display:none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            color: white;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Poppins';
+        }
+
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .section_p img{
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+        .section_p{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="language-box">
+            <label>
+                <input type="radio" name="language" value="english" checked onclick="changeLanguage('english')">
+            </label>
+            <label>
+                <input type="radio" name="language" value="telugu" onclick="changeLanguage('telugu')">
+            </label>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b>Home</b></a></li>
+                <li><a href="about.html"><b>Department</b></a></li>
+                <li><a href="faculty.html"><b>Faculty</b></a></li>
+                <li><a href="attendance.html"><b>R&D</b></a></li>
+                <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b>Placements</b></a></li>
+                <li><a href="General.html"><b>Route Map</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b>← Home</b></button>
+        <h2 style="text-align: center;" id="mainheading">Research and Development Activities</h2>
+        <div class="section_p" style="text-align: center; background-color: lightgreen" onclick="playAudio('audio1')">
+                <h3 style="color: blue;" id="Reshead">Research Projects</h3>
+                <p style="text-align: justify;">
+                    <b>Dr.D.Ragaleela (Principal Investigator) and Dr.Ch.Padmanabha Raju</b> received a grant of Rs.91,000/-from Unnat Bharath Abhiyan under SEG on Rural Energy System for the project titled <b>“Development of an automated coconut breaking Machine”</b> on 18th January 2024. 
+
+                </p>
+                <p style="text-align: justify;">
+                    <b>Dr.D.Ragaleela</b> idea Proposal was approved by MSME Idea Hackathon 3.0 (women) for the project titled <b>“Tender coconut punching machine”</b> on 29th February 2024 with Idea Reference No. IDEAAP012095 in the Sector: Miscellaneous for a funding of approximately Rs.12,75,000/-
+                </p>
+        </div>
+        <div class="section_p" style="text-align: center; background-color: lightgoldenrodyellow;" onclick="playAudio('audio2')">
+            <h3 style="color: blue;" id="devhead">Institutional Developments</h3>
+            <p style="text-align: left" id="solar">
+               <b>᯽ Solar PV 200 kW. Rooftop Installation</b>
+            </p>
+            <img src="solar.png" style="width: 500px;">
+            <br>
+            <p style="text-align: left" id="ev">
+                <b>᯽ Design and Developement of 3 - Wheeler Electric Vehicle</b>
+            </p>
+            <img src="3ev.jpg" style="width: 500px;">
+            <br>
+            <p style="text-align: left" id="accm">
+                <b>᯽ Design and Developement of Automated Coconut Cutting Machine</b>
+            </p>
+            <img src="coco.jpg" style="width: 500px;">
+        </div>
+    </main>
+    <audio id="thankYouAudio" src="thank_you.mp3" preload="auto"></audio>
+    <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
+    <audio id="audio1" src="research.mp3" preload="auto"></audio>
+    <audio id="audio1_telugu" src="research_telugu.mp3" preload="auto"></audio>
+    <audio id="audio2" src="development.mp3" preload="auto"></audio>
+    <audio id="audio2_telugu" src="develpment_telugu.mp3" preload="auto"></audio>
+    <script>
+        let currentAudio = null; // Keep track of the currently playing audio
+        
+        function playAudio(audioId) {
+    const audioElementId = currentLanguage === 'telugu' ? `${audioId}_telugu` : audioId;
+    const audio = document.getElementById(audioElementId);
+    if (!audio) {
+        console.error(`Audio element with ID ${audioElementId} not found.`);
+        return;
+    }
+    if (audio === currentAudio) {
+        if (!audio.paused) {
+            audio.pause();
+            currentAudio = null;
+        } else {
+            audio.play();
+        }
+    } else {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        currentAudio = audio;
+        audio.play();
+    }
+}
+        function setLanguage(language) {
+            // Stop the currently playing audio (if any)
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+            }
+            // Update the current language
+            currentLanguage = language;
+        }
+
+        // Function to play thank-you audio and redirect to home page
+        function playThankYouAudio() {
+            const language = localStorage.getItem("preferredLanguage") || "english";
+            const audioId = language === "telugu" ? "thankYouAudioTelugu" : "thankYouAudio";
+
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            currentAudio = document.getElementById(audioId);
+            currentAudio.play();
+            setTimeout(() => {
+                localStorage.setItem("preferredLanguage", "english"); // Reset language to English
+                window.location.href = "index.html";
+            }, 3000); 
+            // Wait for 3 seconds before redirect
+        }
+
+        
+        // Function to open the corresponding PDF file
+        const transliteration = {
+            telugu: {
+                "Home": "హోమ్",
+                "Department": "డిపార్ట్మెంట్",
+                "Faculty": "ప్రోఫెసర్స్",
+                "R&D": "రీసెర్చ్",
+                "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+                "Placements": "ప్లేస్మెంట్స్",
+                "Route Map": "రూట్ మ్యాప్",
+                "← Home": "← హోమ్",
+                "Research and Development Activities":"పరిశోధన మరియు అభివృద్ధి",
+                "Research Projects":"పరిశోధనలు",
+                "Institutional Developments":"అభివృద్ధి కార్యక్రమాలు",
+                "᯽ Solar PV 200 kW. Rooftop Installation":"᯽ 200 KW రూఫ్ టాప్ సోలార్ ప్లాంట్ అమరిక ( సౌర విద్యుత్ )",
+                "᯽ Design and Developement of 3 - Wheeler Electric Vehicle":"᯽ 3 వీలర్ ఎలక్ట్రిక్ వెహికల్ డిజైన్ మరియు అభివృద్ధి",
+                "᯽ Design and Developement of Automated Coconut Cutting Machine":"᯽ ఆటోమేటిక్ కోకోనాట్ (కొబ్బరికాయలు) కటింగ్ మెషిన్"
+            },
+            english: {
+                "హోమ్": "Home",
+                "డిపార్ట్మెంట్": "Department",
+                "ప్రోఫెసర్స్": "Faculty",
+                "రీసెర్చ్": "R&D",
+                "లాబ్స్ & క్లాస్రూమ్స్": "Labs & Classrooms",
+                "ప్లేస్మెంట్స్": "Placements",
+                "రూట్ మ్యాప్": "Route Map",
+                "← Home": "← Home",
+                "Research and Development Activities":"Research and Development Activities",
+                "Research Projects":"Research Projects",
+                "Institutional Developments":"Institutional Developments",
+                "᯽ Design and Developement of Automated Coconut Cutting Machine":"᯽ Design and Developement of Automated Coconut Cutting Machine",
+                "᯽ Design and Developement of 3 - Wheeler Electric Vehicle":"᯽ Design and Developement of 3 - Wheeler Electric Vehicle",
+                "᯽ Solar PV 200 kW. Rooftop Installation":"᯽ Solar PV 200 kW. Rooftop Installation"
+            }
+        };
+
+        function changeLanguage(language) {
+            localStorage.setItem("preferredLanguage", language);
+
+            // Change text of navigation links
+            const navLinks = document.querySelectorAll("nav ul li a b");
+            navLinks.forEach(link => {
+                link.textContent = transliteration[language][link.textContent] || link.textContent;
+            });
+
+            document.getElementById("mainheading").textContent = transliteration[language]["Research and Development Activities"];
+            document.getElementById("Reshead").textContent = transliteration[language]["Research Projects"];
+            document.getElementById("devhead").textContent = transliteration[language]["Institutional Developments"];
+            document.getElementById("solar").textContent = transliteration[language]["᯽ Solar PV 200 kW. Rooftop Installation"];
+            document.getElementById("ev").textContent = transliteration[language]["᯽ Design and Developement of 3 - Wheeler Electric Vehicle"];
+            document.getElementById("accm").textContent = transliteration[language]["᯽ Design and Developement of Automated Coconut Cutting Machine"];
+            // Update "Back" button text
+            const backBtn = document.getElementById("backBtn");
+            backBtn.innerHTML = `<b>${transliteration[language]["← Home"] || "← హోమ్"}</b>`;
+        }
+
+        function applySavedLanguage() {
+            const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
+            document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
+            changeLanguage(savedLanguage);
+        }
+        document.querySelectorAll('audio').forEach(audio => {
+        audio.addEventListener('error', () => {
+            console.error(`Error loading audio: ${audio.src}`);
+        });
+    });
+        // Apply the saved language on page load
+        document.addEventListener('DOMContentLoaded', applySavedLanguage);
+    </script>
+</body>
+</html>  

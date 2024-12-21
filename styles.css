@@ -1,0 +1,123 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+    font-family: 'Poppins',Arial, Helvetica, sans-serif, Helvetica, sans-serif, Helvetica, sans-serif,sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; 
+    color: #333;
+}
+
+header, footer {
+    background-color: #00274d; /* Dark Blue */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: background 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color:#ffdd57; /* Light Yellow */
+    color: black;
+    border-radius: 5px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+button.back-btn {
+    background-color: #ffdd57;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px;
+    transition: background 0.3s;
+}
+
+button.back-btn:hover {
+    background-color: #ffd500;
+}
+
+/* Rounded Corner Section */
+.section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.section_p {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+.section:hover{
+    background-color: #f8e37b;
+}
+
+/* Responsive Grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.grid-item {
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(30% - 20px);
+    text-align: center;
+}
+
+.grid-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-item {
+        width: calc(45% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    header nav ul {
+        flex-direction: column;
+    }
+    .grid-item {
+        width: calc(100% - 20px);
+    }
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs & Classrooms | EEE Department</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<style>
+    .grid-item {
+        position: relative;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px;
+        text-align: center;
+        background-color: #f9f9f9;
+        transition: transform 0.3s, background-color 0.3s;
+    }
+    .grid-item:hover {
+        background-color: lightyellow;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+    .grid-item.active {
+        background-color: #d1e7dd;
+        border: 2px solid #0f5132;
+    }
+
+    .language-box {
+        display:none;
+    }
+
+    .language-box label {
+        display:none;
+    }
+
+    nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        color: white;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        color: white;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .back-btn {
+        margin: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        font-family: 'Poppins';
+    }
+
+    .back-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+    <header>
+        <div class="language-box">
+            <label>
+                <input type="radio" name="language" value="english" checked onclick="changeLanguage('english')">
+            </label>
+            <label>
+                <input type="radio" name="language" value="telugu" onclick="changeLanguage('telugu')">
+            </label>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><b>Home</b></a></li>
+                <li><a href="about.html"><b>Department</b></a></li>
+                <li><a href="faculty.html"><b>Faculty</b></a></li>
+                <li><a href="attendance.html"><b>R&D</b></a></li>
+                <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
+                <li><a href="activities.html"><b>Placements</b></a></li>
+                <li><a href="General.html"><b>Route Map</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b> ← Home </b></button>
+        <h2 id="mainHeading" style="text-align: center;">Labs & Classrooms</h2>
+        <div class="grid">
+            <div class="grid-item" data-english="II year Classroom|Room No: 134A" data-telugu="II Yr క్లాస్ రూమ్|రూమ్ నం: 134A" onclick="playAudio('audio2')">
+                <h3>II year Classroom</h3>
+                <p>Room No: 132A</p>
+            </div>
+            <div class="grid-item" data-english="III year Classroom|Room No: 134" data-telugu="III Yr క్లాస్ రూమ్|రూమ్ నం: 134" onclick="playAudio('audio3')">
+                <h3>III year Classroom</h3>
+                <p>Room No: 132</p>
+            </div>
+            <div class="grid-item" data-english="IV year Classroom|Room No: 252" data-telugu="IV Yr క్లాస్ రూమ్|రూమ్ నం: 252" onclick="playAudio('audio4')">
+                <h3>IV Year Classroom</h3>
+                <p>Room No: 252</p>
+            </div>
+            <div class="grid-item" data-english="Networks Lab|Room No: 140" data-telugu="నెట్వర్క్ ల్యాబ్|రూమ్ నం: 140" onclick="playAudio('audio5')">
+                <h3>Networks Lab</h3>
+                <p>Room No: 140</p>
+            </div>
+            <div class="grid-item" data-english="Electrical Machines Lab|Room No: 139" data-telugu="ఎలక్ట్రికల్ మెషిన్స్ ల్యాబ్|రూమ్ నం: 139" onclick="playAudio('audio6')">
+                <h3>Electrical Machines Lab</h3>
+                <p>Room No: 139</p>
+            </div>
+            <div class="grid-item"data-english="Power Systems Lab|Room No: 135" data-telugu="పవర్ సిస్టమ్స్ ల్యాబ్|రూమ్ నం: 135"  onclick="playAudio('audio7')">
+                <h3>Power Systems Lab</h3>
+                <p>Room No: 135</p>
+            </div>
+            <div class="grid-item" data-english="Electrical Measurements Lab|Room No: 133" data-telugu="ఎలక్ట్రికల్ మెస్సుర్మెంట్స్ ల్యాబ్|రూమ్ నం: 133" onclick="playAudio('audio8')">
+                <h3>Electrical Measurements Lab</h3>
+                <p>Room No: 133</p>
+            </div>
+            <div class="grid-item" data-english="Control Systems Lab|Room No: 243" data-telugu="కంట్రోల్ సిస్టమ్స్ ల్యాబ్|రూమ్ నం: 243" onclick="playAudio('audio9')">
+                <h3>Control Systems Lab</h3>
+                <p>Room No: 243</p>
+            </div>
+            <div class="grid-item" data-english="Power Electronics Lab|Room No: 241" data-telugu="పవర్ ఎలక్ట్రానిక్స్ ల్యాబ్|రూమ్ నం: 241" onclick="playAudio('audio10')">
+                <h3>Power Electronics Lab</h3>
+                <p>Room No: 241</p>
+            </div>
+            <div class="grid-item" data-english="Microprocessors Lab|Room No: 342" data-telugu="మైక్రోప్రాసెసర్స్ ల్యాబ్|రూమ్ నం: 342" onclick="playAudio('audio11')">
+                <h3>Microprocessors Lab</h3>
+                <p>Room No: 342</p>
+            </div>
+            <div class="grid-item" data-english="Simulation Lab|Room No: 247" data-telugu="సిములేషన్ ల్యాబ్|రూమ్ నం: 247" onclick="playAudio('audio12')">
+                <h3>Simulation Lab</h3>
+                <p>Room No: 247</p>
+            </div>
+            <div class="grid-item" data-english="Cad Lab|Room No: 348" data-telugu="CAD ల్యాబ్|రూమ్ నం: 348" onclick="playAudio('audio13')">
+                <h3>CAD Lab</h3>
+                <p>Room No: 348</p>
+            </div>
+        </div>
+    </main>
+    <audio id="thankYouAudio" src="thank_you.mp3" preload="auto"></audio>
+    <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
+    <audio id="audio2" src="II_class.mp3" preload="auto"></audio>
+  <audio id="audio3" src="III_class.mp3" preload="auto"></audio>
+    <audio id="audio4" src="IV_class.mp3" preload="auto"></audio>
+    <audio id="audio5" src="Networks_lab.mp3" preload="auto"></audio>
+    <audio id="audio6" src="Electrical_Machines.mp3" preload="auto"></audio>
+    <audio id="audio7" src="Power_Systems_Lab.mp3" preload="auto"></audio>
+    <audio id="audio8" src="Electrical_measurements_lab.mp3" preload="auto"></audio>
+    <audio id="audio9" src="Control_Systems_lab.mp3" preload="auto"></audio>
+    <audio id="audio10" src="Power_Electronics_Lab.mp3" preload="auto"></audio>
+    <audio id="audio11" src="MIcroprocessors_Lab.mp3" preload="auto"></audio>
+    <audio id="audio12" src="Simulation_lab.mp3" preload="auto"></audio>
+    <audio id="audio13" src="CAD_LAB.mp3" preload="auto"></audio>
+    <audio id="audio2_telugu" src="II_class_telugu.mp3" preload="auto"></audio>
+  <audio id="audio3_telugu" src="III_class_telugu.mp3" preload="auto"></audio>
+    <audio id="audio4_telugu" src="IV_class_telugu.mp3" preload="auto"></audio>
+    <audio id="audio5_telugu" src="Networks_Lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio6_telugu" src="Electrical_Machines_lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio7_telugu" src="Power_Systems_Lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio8_telugu" src="Electrical_measurements_lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio9_telugu" src="Control_Systems_lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio10_telugu" src="Power_Electronics_Lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio11_telugu" src="Microprocessors_Lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio12_telugu" src="Simulation_lab_telugu.mp3" preload="auto"></audio>
+    <audio id="audio13_telugu" src="CAD_LAB_telugu.mp3" preload="auto"></audio>
+    <script>
+        let currentAudio = null;
+        function playAudio(audioId) {
+            const audioElementId = currentLanguage === 'telugu' ? `${audioId}_telugu` : audioId;
+            const audio = document.getElementById(audioElementId);
+
+            if (audio === currentAudio) {
+                // If the same audio is clicked, toggle pause/play
+                if (!audio.paused) {
+                    audio.pause();
+                    currentAudio = null;
+                } else {
+                    audio.play();
+                }
+            } else {
+                // Stop the currently playing audio (if any)
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+                // Play the new audio
+                currentAudio = audio;
+                audio.play();
+            }
+        }
+
+        function playThankYouAudio() {
+            const audioId = currentLanguage === "telugu" ? "thankYouAudioTelugu" : "thankYouAudio";
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            currentAudio = document.getElementById(audioId);
+            currentAudio.play();
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 3000); // Redirect after 3 seconds
+        }
+
+        function setLanguage(language) {
+            // Stop the currently playing audio (if any)
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+            }
+            // Update the current language
+            currentLanguage = language;
+        }
+
+        const transliteration = {
+    telugu: {
+        "Home": "హోమ్",
+        "Department": "డిపార్ట్మెంట్",
+        "Faculty": "ప్రోఫెసర్స్",
+        "R&D": "రీసెర్చ్",
+        "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
+        "Placements": "ప్లేస్మెంట్స్",
+        "Route Map": "రూట్ మ్యాప్",
+        " ← Home ": " ← హోమ్ ",
+    },
+    english: {
+        "Home": "Home",
+        "Department": "Department",
+        "Faculty": "Faculty",
+        "R&D": "R&D",
+        "Labs & Classrooms": "Labs & Classrooms",
+        "Placements": "Placements",
+        "Route Map": "Route Map",
+        " ← Home ": " ← Home ",
+    }
+};
+
+function changeLanguage(language) {
+    localStorage.setItem("preferredLanguage", language);
+    const navLinks = document.querySelectorAll("nav ul li a b");
+    navLinks.forEach(link => {
+        link.textContent = transliteration[language][link.textContent.trim()] || link.textContent.trim();
+    });
+
+    const headingTranslation = transliteration[language]["Labs & Classrooms"];
+    document.getElementById("mainHeading").textContent = headingTranslation || "Labs & Classrooms";
+
+    const gridItems = document.querySelectorAll(".grid-item");
+    gridItems.forEach(item => {
+        const [title, description] = item.dataset[language].split('|');
+        item.querySelector("h3").textContent = title;
+        item.querySelector("p").textContent = description;
+    });
+
+    const backBtn = document.getElementById("backBtn");
+    backBtn.innerHTML = `<b>${transliteration[language][" ← Home "] || " ← Home "}</b>`;
+}
+
+
+        function applySavedLanguage() {
+            const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
+            document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
+            setLanguage(savedLanguage);
+            changeLanguage(savedLanguage);
+        }
+
+        document.addEventListener('DOMContentLoaded', applySavedLanguage);
+    </script>
+</body>
+</html>
