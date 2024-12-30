@@ -14,6 +14,28 @@
         .language-box label {
             display:none;
         }
+        .clubs-section {
+            display: block;
+            margin: 20px auto;
+            width: 55%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .club {
+            margin-bottom: 20px;
+        }
+
+        .club h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .club p {
+            margin: 10px 0;
+        }
 
         nav {
             display: flex;
@@ -21,7 +43,7 @@
             justify-content: center;
             height: 50px;
             color: white;
-            position: sticky; /* Makes the navigation bar stick to the top */
+            position: relative; /* Makes the navigation bar stick to the top */
             top: 0; /* Stick to the top of the viewport */
             z-index: 1000; /* Ensures it stays above other content */
             width: 100%;
@@ -67,32 +89,21 @@
         .back-btn:hover {
             background-color: #0056b3;
         }
-        .header.fixed {
-   
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    position: fixed; /* Change to fixed position */
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
     </style>
 </head>
 <body>
-    <header class="header" id="header">
+    <header>
         <div class="language-box">
             <label>
                 <input type="radio" name="language" value="english" onclick="changeLanguage('english')">
-                English
             </label>
             <label>
                 <input type="radio" name="language" value="telugu" onclick="changeLanguage('telugu')">
-                తెలుగు
             </label>
         </div>
-        <nav role="navigation" aria-label="Main Navigation">
-
+        <nav>
             <ul>
-                <li><a href="index.html" class="active"><b>Home</b></a></li>
+                <li><a href="index.html"><b>Home</b></a></li>
                 <li><a href="about.html"><b>Department</b></a></li>
                 <li><a href="faculty.html"><b>Faculty</b></a></li>
                 <li><a href="attendance.html"><b>R&D</b></a></li>
@@ -103,57 +114,44 @@
             </ul>
         </nav>
     </header>
-    
     <main>
         <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b>← Home</b></button>
-        <div class="section">
-            <h2 style="text-align: center; color: blue;">About the Department</h2>
-            <p style="text-align: justify;">
-                The Department of Electrical and Electronics Engineering (EEE) at PVPSIT is committed to providing quality education and fostering innovation. With a focus on academic excellence and industry readiness, the department offers comprehensive programs that cover the latest advancements in electrical and electronics engineering.
-            </p>
-            <p style="text-align: justify;">
-                Our dedicated faculty members and state-of-the-art facilities ensure that students receive hands-on experience and theoretical knowledge to excel in their careers. The department emphasizes research, development, and real-world applications to prepare students for the evolving challenges of the industry.
-            </p>
-        </div>
-        <div class="section">
-            <h2 style="text-align: center; color: blue;">Vision of the Department</h2>
-            <p style="text-align: center;">
-                To mould young and fresh minds into well-disciplined and competent engineers to excel in the field of Electrical & Electronics Engineering to cater to the industrial/societal needs and compete at a global level.
-            </p>
-        </div>
-        <div class="section">
-            <h2 style="text-align: center; color: blue;">Mission of the Department</h2>
-            <p style="text-align: justify;">
-                To produce competent and quality technical professionals with strong basics of electrical engineering principles and techniques.
-            </p>
-            <p style="text-align: justify;">
-                To facilitate the students to work with modern tools, state-of-the-art technologies, innovative research capabilities besides inculcating leadership abilities and ethical values.
-            </p>
-        </div>
-        <div class="section">
-            <h2 style="text-align: center; color: blue;">Program Educational Outcomes</h2>
-            <p style="text-align: justify;">
-                <b>PEO-I :</b> Have a strong foundation in engineering fundamentals, mathematics, basic sciences, humanities, and modern software tools with the ability to apply them to conceive, analyze, design, and implement solutions to problems in the electrical engineering field.
-            </p>
-            <p style="text-align: justify;">
-                <b>PEO-II :</b> Have a broad-based background to practice electrical engineering in the areas of control systems, machines, measurements, power systems, power electronics, and their applications in industry and government sectors meeting the growing expectations of stakeholders.
-            </p>
-            <p style="text-align: justify;">
-                <b>PEO-III :</b> Have requisite skills to excel in a multidisciplinary engineering environment with awareness of contemporary issues, professional responsibility, the impact of technology on society, and the need for lifelong learning.
-            </p>
-            <p style="text-align: justify;">
-                <b>PEO-IV :</b> Have an ability to pursue higher studies to meet the needs of global standards and participate in team-oriented, open-ended activities both as team members and as leaders with professional communication skills to compete in the global scenario.
-            </p>
+        <div class="clubs-section" >
+            <h2 style="text-align: center; color: blue;" id="clubheading">᯽ Student Clubs ᯽</h2>
+
+            <div class="club">
+                <h3>ISTE Club</h3>
+                <p><b>Club Details:</b> The ISTE Club focuses on fostering technical skills and innovation among students. It organizes workshops, seminars, and guest lectures regularly.</p>
+                <p><b>Faculty Incharge:</b> Ms. K. Bhavana</p>
+                <p><b>Events:</b> Coding contests, Technical quizzes, and Guest lectures on emerging technologies.</p>
+            </div>
+            <br>
+            <div class="club">
+                <h3>SESI Club</h3>
+                <p><b>Club Details:</b> SESI Club promotes renewable energy awareness and conducts research-oriented projects on sustainable energy solutions.</p>
+                <p><b>Faculty Incharge:</b> Ms. K. Bhavana</p>
+                <p><b>Events:</b> Solar energy workshops, Energy conservation drives, and Research paper presentations.</p>
+            </div>
+             <br>
+            <div class="club">
+                <h3>BIS Club</h3>
+                <p><b>Club Details:</b> BIS Club focuses on building innovative solutions in the fields of IoT, AI, and data analytics. It encourages collaborative projects and idea-sharing.</p>
+                <p><b>Faculty Incharge:</b> Mr. T. Srinivasa Rao</p>
+                <p><b>Events:</b> Hackathons, AI-based project expos, and Data analytics bootcamps.</p>
+            </div>
+            <br>
+            <div class="club">
+                <h3>IOT Club</h3>
+                <p><b>Club Details:</b> The IoT Club engages students in learning and applying IoT technologies to solve real-world problems, enhancing practical skills.</p>
+                <p><b>Faculty Incharge:</b> Mr. M. Hemanth Sai</p>
+                <p><b>Events:</b> IoT device development workshops, Smart city project contests, and Networking sessions with industry experts.</p>
+            </div>
         </div>
     </main>
-
+    
     <!-- Audio elements for different sections -->
     <audio id="thankYouAudioEnglish" src="thank_you.mp3" preload="auto"></audio>
     <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
-    <audio id="aboutAudio" src="about.mp3" preload="auto"></audio>
-    <audio id="visionAudio" src="vision.mp3" preload="auto"></audio>
-    <audio id="missionAudio" src="mission.mp3" preload="auto"></audio>
-
     <script>
         let currentAudio = null;
 
@@ -197,28 +195,6 @@ function toggleAudio(audioId) {
 
 // Update language switching and back button functionality as before
 // ...
-
-// Example usage of toggleAudio
-document.querySelectorAll('.section').forEach(section => {
-    section.addEventListener('click', () => {
-        let audioId;
-        switch (section.querySelector('h2').textContent.trim()) {
-            case "About the Department":
-                audioId = "aboutAudio";
-                break;
-            case "Vision of the Department":
-                audioId = "visionAudio";
-                break;
-            case "Mission of the Department":
-                audioId = "missionAudio";
-                break;
-            default:
-                return;
-        }
-        toggleAudio(audioId);
-    });
-});
-
 const transliteration = {
         telugu: {
             "Home": "హోమ్",
@@ -229,6 +205,7 @@ const transliteration = {
             "Placements": "ప్లేస్మెంట్స్",
             "Route Map": "రూట్ మ్యాప్",
             "← Home": "← హోమ్",
+            "᯽ Student Clubs ᯽": "᯽ స్టూడెంట్ క్లబ్స్ ᯽",
             "Student Activities": "విద్యార్థి కార్యకలాపాలు"
         },
         english: {
@@ -240,38 +217,30 @@ const transliteration = {
             "ప్లేస్మెంట్స్": "Placements",
             "రూట్ మ్యాప్": "Route Map",
             "← హోమ్": "← Home",
+            "᯽ స్టూడెంట్ క్లబ్స్ ᯽": "᯽ Student Clubs ᯽",
             "విద్యార్థి కార్యకలాపాలు": "Student Activities"
         }
     };
-
     function changeLanguage(language) {
         localStorage.setItem("preferredLanguage", language);
 
-        // Change text of navigation links
+        // Update navigation links
         const navLinks = document.querySelectorAll("nav ul li a b");
         navLinks.forEach(link => {
-            link.textContent = transliteration[language][link.textContent.trim()] || link.textContent.trim();
+            link.textContent = transliteration[language][link.textContent.trim()] || link.textContent;
         });
 
         // Update "Back" button text
         const backBtn = document.getElementById("backBtn");
-        backBtn.innerHTML = `<b>${transliteration[language]["← Home"] || "← Home"}</b>`;
-    }
-    window.addEventListener('scroll', function () {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('fixed');
-            } else {
-                header.classList.remove('fixed');
-            }
-        });
+        backBtn.innerHTML = `<b>${transliteration[language]["← Home"] || backBtn.textContent.trim()}</b>`;
 
+        // Update "Student Clubs" heading
+        const clubHeading = document.getElementById("clubheading");
+        clubHeading.textContent = transliteration[language]["᯽ Student Clubs ᯽"] || clubHeading.textContent;
+    }
     function applySavedLanguage() {
         const savedLanguage = localStorage.getItem("preferredLanguage") || "english";
-        const languageRadio = document.querySelector(`input[name="language"][value="${savedLanguage}"]`);
-        if (languageRadio) {
-            languageRadio.checked = true;
-        }
+        document.querySelector(`input[name="language"][value="${savedLanguage}"]`).checked = true;
         changeLanguage(savedLanguage);
     }
 

@@ -84,9 +84,17 @@
             text-align: center;
             font-family: 'Poppins';
         }
+        .header.fixed {
+   
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+   position: fixed; /* Change to fixed position */
+   top: 0;
+   width: 100%;
+   z-index: 1000;
+}
 </style>
 <body>
-    <header>
+    <header id = "header">
         <div class="language-box">
             <label>
                 <input type="radio" name="language" id="englishRadio" value="english" checked onclick="changeLanguage('english')">
@@ -104,6 +112,7 @@
                 <li><a href="labs.html"><b class="translatable">Labs & Classrooms</b></a></li>
                 <li><a href="activities.html"><b class="translatable">Placements</b></a></li>
                 <li><a href="General.html"><b class="translatable">Route Map</b></a></li>
+                <li><a href="student.html"><b>Student Activities</b></a></li>
             </ul>
         </nav>
     </header>
@@ -446,7 +455,8 @@
                 "PRINCIPAL":"ప్రిన్సిపాల్",
                 "Room No: 102":"రూమ్ నో: 102",
                 "Contact No: 8662581699":"ఫోన్ : 8662581699",
-                "PRINCIPAL & HEAD OF EEE":"ప్రిన్సిపాల్ & హెడ్ అఫ్ EEE"
+                "PRINCIPAL & HEAD OF EEE":"ప్రిన్సిపాల్ & హెడ్ అఫ్ EEE",
+                "Student Activities": "విద్యార్థి కార్యకలాపాలు"
             };
             const teluguToEnglish =  {
                 "హోమ్": "Home",
@@ -541,7 +551,8 @@
                 "ప్రిన్సిపాల్":"PRINCIPAL",
                 "రూమ్ నో: 102":"Room No: 102",
                 "ఫోన్ : 8662581699":"Contact No: 8662581699",
-                "ప్రిన్సిపాల్ & హెడ్ అఫ్ EEE":"PRINCIPAL & HEAD OF EEE"
+                "ప్రిన్సిపాల్ & హెడ్ అఫ్ EEE":"PRINCIPAL & HEAD OF EEE",
+                "విద్యార్థి కార్యకలాపాలు": "Student Activities"
             };
 
 function playAudio(audioId) {
@@ -558,6 +569,14 @@ function playAudio(audioId) {
         currentAudio.play();
     }
 }
+window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('fixed');
+            } else {
+                header.classList.remove('fixed');
+            }
+        });
 
 function handleGridItemClick(role) {
     const language = localStorage.getItem("preferredLanguage") || "english";

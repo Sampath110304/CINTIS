@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,38 @@
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
     <style>
+        .grid-item {
+            position: relative;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            transition: transform 0.3s, background-color 0.3s;
+            width: 90%;
+        }
+
+        .grid-item:hover {
+            background-color: lightyellow;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .grid-item.active {
+            background-color: #d1e7dd;
+            border: 2px solid #0f5132;
+        }
+
         .language-box {
-        display:none;
-    }
+            display: none;
+        }
 
-    .language-box label {
-        display:none;
-    }
+        .language-box label {
+            display: none;
+        }
 
-    nav {
+        nav {
             position: relative;
             display: flex;
             align-items: center;
@@ -25,7 +49,7 @@
         }
 
         .language-box input[type="radio"] {
-            display:none;
+            display: none;
         }
 
         nav ul {
@@ -65,17 +89,81 @@
             background-color: #0056b3;
         }
 
-        .section_p img{
+        .section_p img {
             display: block;
             margin: 0 auto;
             border-radius: 10px;
             box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
         }
-        .section_p{
+
+        .section_p {
             cursor: pointer;
         }
+
+        canvas {
+            max-width: fit-content;
+            height: fit-content;
+            
+        }
+
+        .publications {
+            display: flex;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: fit-content;
+            height: fit-content;
+        }
+
+        .publication-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            max-width: fit-content;
+            height: fit-content;
+        }
+
+        .publication-item canvas {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            align-items: center;
+        }
+
+        .grants-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+  
+        }
+
+        .grants-column {
+            width: 100%;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grants-column h3 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 10fr 10fr ;
+            width: 90%;
+            gap: 20px;
+        }
+
     </style>
 </head>
+
 <body>
     <header>
         <div class="language-box">
@@ -94,50 +182,287 @@
                 <li><a href="attendance.html"><b>R&D</b></a></li>
                 <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
                 <li><a href="activities.html"><b>Placements</b></a></li>
-                <li><a href="General.html"><b>Route Map</b></a></li>
+                <li><a href="General.html"><b class="translatable">Route Map</b></a></li>
+                <li><a href="student.html"><b>Student Activities</b></a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <button class="back-btn" id="backBtn" onclick="playThankYouAudio()"><b>← Home</b></button>
         <h2 style="text-align: center;" id="mainheading">Research and Development Activities</h2>
-        <div class="section_p" style="text-align: center; background-color: lightgreen" onclick="playAudio('audio1')">
-                <h3 style="color: blue;" id="Reshead">Research Projects</h3>
-                <p style="text-align: justify;">
-                    <b>Dr.D.Ragaleela (Principal Investigator) and Dr.Ch.Padmanabha Raju</b> received a grant of Rs.91,000/-from Unnat Bharath Abhiyan under SEG on Rural Energy System for the project titled <b>“Development of an automated coconut breaking Machine”</b> on 18th January 2024. 
 
-                </p>
-                <p style="text-align: justify;">
-                    <b>Dr.D.Ragaleela</b> idea Proposal was approved by MSME Idea Hackathon 3.0 (women) for the project titled <b>“Tender coconut punching machine”</b> on 29th February 2024 with Idea Reference No. IDEAAP012095 in the Sector: Miscellaneous for a funding of approximately Rs.12,75,000/-
-                </p>
-        </div>
-        <div class="section_p" style="text-align: center; background-color: lightgoldenrodyellow;" onclick="playAudio('audio2')">
-            <h3 style="color: blue;" id="devhead">Institutional Developments</h3>
-            <p style="text-align: left" id="solar">
-               <b>᯽ Solar PV 200 kW. Rooftop Installation</b>
+        <div class="section_p" style="background-color: lightgreen" onclick="playAudio('audio1')">
+            <h3 style="color: blue; text-align: center;" id="Reshead">Research Projects</h3>
+            <p>
+                <b>Dr.D.Ragaleela (Principal Investigator) and Dr.Ch.Padmanabha Raju</b> received a grant of Rs.91,000/- from Unnat Bharath Abhiyan under SEG on Rural Energy System for the project titled <b>“Development of an automated coconut breaking Machine”</b> on 18th January 2024.
             </p>
+            <p>
+                <b>Dr.D.Ragaleela</b>'s proposal was approved by MSME Idea Hackathon 3.0 (women) for the project titled <b>“Tender coconut punching machine”</b> on 29th February 2024 with Idea Reference No. IDEAAP012095 in the Sector: Miscellaneous for a funding of approximately Rs.12,75,000/-.
+            </p>
+        </div>
+
+        <div class="section_p" style="background-color: lightgoldenrodyellow;" onclick="playAudio('audio2')">
+            <h3 style="color: blue; text-align: center;" id="devhead">Institutional Developments</h3>
+            <p id="solar"><b>᯽ Solar PV 200 kW. Rooftop Installation</b></p>
             <img src="solar.png" style="width: 500px;">
             <br>
-            <p style="text-align: left" id="ev">
-                <b>᯽ Design and Developement of 3 - Wheeler Electric Vehicle</b>
-            </p>
+            <p id="ev"><b>᯽ Design and Development of 3-Wheeler Electric Vehicle</b></p>
             <img src="3ev.jpg" style="width: 500px;">
             <br>
-            <p style="text-align: left" id="accm">
-                <b>᯽ Design and Developement of Automated Coconut Cutting Machine</b>
-            </p>
+            <p id="accm"><b>᯽ Design and Development of Automated Coconut Cutting Machine</b></p>
             <img src="coco.jpg" style="width: 500px;">
         </div>
+
+        <h2 style="color: blue; text-align: center;" id="devhead">Research Publication Details</h2>
+
+        <section class="publications">
+            <div class="publication-item">
+                <h3>Research Publications 2023-24</h3>
+                <p>Total Publications : 65</p>
+                <canvas id="chart2023"></canvas>
+            </div>
+            <div class="publication-item">
+                <h3>Research Publications 2022-23</h3>
+                <p>Total Publications : 69</p>
+                <canvas id="chart2022"></canvas>
+            </div>
+            <div class="publication-item">
+                <h3>Research Publications 2021-22</h3>
+                <p>Total Publications : 65</p>
+                <canvas id="chart2021"></canvas>
+            </div>
+            <div class="publication-item">
+                <h3>Research Publications 2020-21</h3>
+                <p>Total Publications : 84</p>
+                <canvas id="chart2020"></canvas>
+            </div>
+            <div class="publication-item">
+                <h3>Research Publications 2019-20</h3>
+                <p>Total Publications : 72</p>
+                <canvas id="chart2019"></canvas>
+            </div>
+        </section>
+
+        <h2 style="color: black; text-align: center;">Research Grants</h2>
+
+        <div class="grants-section">
+            <!-- Internal Grants Section -->
+            <div class="grants-column">
+                <h3>Internal Grants by SAGTE</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h4>Locating various power plants in AP using IOT </h4>
+                        <p><b>Principal Investigator: </b>Dr. Ch.Padmanabha Raju</p>
+                        <p><b>Amount: </b>Rs.20,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Agri Tech Master</h4>
+                        <p><b>Principal Investigator: </b>M. Devika Rani</p>
+                        <p><b>Amount: </b>Rs.25,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Automatic Lawn Mover</h4>
+                        <p><b>Principal Investigator: </b>K. Bhavana</p>
+                        <p><b>Amount: </b>Rs.20,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Biomedical waste monitoring system using IOT</h4>
+                        <p><b>Principal Investigator: </b>Dr. K. Lenin</p>
+                        <p><b>Amount: </b>Rs.30,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Biomedical waste monitoring system using IOT</h4>
+                        <p><b>Principal Investigator: </b>Dr. K. Lenin</p>
+                        <p><b>Amount: </b>Rs.30,000/-</p>
+                    </div> 
+                    <div class="grid-item">
+                        <h4>Multifunctional Fire Figting Robot</h4>
+                        <p><b>Principal Investigator: </b>Dr. M. V. Ramesh</p>
+                        <p><b>Amount: </b>Rs.25,000/-</p>
+                    </div>
+                     <div class="grid-item">
+                    <h4>Interactive Robot with Speech Recognition and Realistic Simulation</h4>
+                    <p><b>Principal Investigator: </b>J. Hemalatha </p>
+                    <p><b>Amount: </b>Rs.20,000/-</p>
+                </div>    
+                   <div class="grid-item">
+                 <h4>	Design and simulation of automatic sun tracking Solar panel using ARDUINO</h4>
+                  <p><b>Principal Investigator: </b>Dr. C. Kumar </p>
+                <p><b>Amount: </b>Rs.17,000/-</p>
+               </div>
+   
+    <div class="grid-item">
+   <h4>	A smart Helmet for improving safety in mining industry</h4>
+   <p><b>Principal Investigator: </b>V.Sai Geetha Lakshmi</p>
+   <p><b>Amount: </b>Rs. 11,500 /-</p>
+</div>
+
+<div class="grid-item">
+<h4>Smart charging stations for electric vehicles through IOT interface</h4>
+<p><b>Principal Investigator: </b>	Dr.M.V.Ramesh </p>
+<p><b>Amount: </b>Rs. 27,700 /-</p>
+</div>
+
+<div class="grid-item">
+<h4>FPGA trainer</h4>
+<p><b>Principal Investigator: </b>Dr. P. Muthukumar </p>
+<p><b>Amount: </b>Rs.20,000/-</p>
+</div>
+
+<div class="grid-item">
+    <h4>Underwater surveillance vehicle</h4>
+    <p><b>Principal Investigator: </b>Mr. P. Karunakar </p>
+    <p><b>Amount: </b>Rs.15,250/-</p>
+    </div>
+    <div class="grid-item">
+        <h4>Hardware Implementation of Electric Vehicle Two Wheeler at Laboratory Level & Design and Development of Three Wheeler Electric Vehicle</h4>
+        <p><b>Principal Investigator: </b>	Dr.C.Kumar	
+           		Dr.N.Vijayanand	
+           		Dr.D.Ragaleela	
+             </p>
+        <p><b>Amount: </b>Rs.90,000/-	Rs.1,50,000/-	Rs.50,000/-</p>
+        </div>
+        <div class="grid-item">
+            <h4>Design and Implementation of
+                Multipurpose Microcontroller based Inverter
+                </h4>
+            <p><b>Principal Investigator: </b>Dr. M. V. Ramesh </p>
+            <p><b>Amount: </b>Rs.60,000/-</p>
+            </div>
+            <div class="grid-item">
+                <h4>Flexible Multilevel DC link Inverter using FPGA
+                    </h4>
+                <p><b>Principal Investigator: </b>Dr. P. Muthukumar</p>
+                <p><b>Amount: </b>Rs.90,000/-</p>
+                </div>
+                </div>
+            </div>
+            
+                
+
+            <!-- External Grants Section -->
+            <div class="grants-column">
+                <h3>External Grants</h3>
+                <div class="grid">
+                    <div class="grid-item">
+                        <h4>Development of an automated coconut breaking Machine </h4>
+                        <p><b>Principal Investigator: </b>Dr. D.Ragaleela</p>
+                        <p><b>Agency: </b>Unnat Bharath Abhiyan</p>
+                        <p><b>Amount: </b>Rs.91,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Tender coconut punching machine
+                         </h4>
+                        <p><b>Principal Investigator: </b>Dr. D.Ragaleela</p>
+                        <p><b>Agency: </b>Unnat Bharath Abhiyan</p>
+                        <p><b>Amount: </b>Rs.15,00,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>	Design and Analysis of Power System Protection, security & Analysis	
+                         </h4>
+                        <p><b>Principal Investigator: </b>Dr. M. Venu Gopala Rao</p>
+                        <p><b>Agency: </b>AICTE – AQIS</p>
+                        <p><b>Amount: </b>Rs.13,00,000/-</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>	Advanced trends in Renewable sources of energy
+                         </h4>
+                        <p><b>Principal Investigator: </b>Dr. M.V. Ramesh
+                            </p>
+                        <p><b>Agency: </b>AICTE – AQIS</p>
+                        <p><b>Amount: </b>Rs.2,50,000/-	</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Unnat Bharat Abhiyan
+                            Under this program five villages were adopted and for each village ten thousand rupees is provided under UBA                            
+                         </h4>
+                        <p><b>Principal Investigator: </b>	Dr.Ch.Padmanabha Raju
+                            </p>
+                        <p><b>Agency: </b>MHRD
+                            Government of India through a challenge mode application	
+                            </p>
+                        <p><b>Amount: </b> Rs.50,000/-	</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Minor research project on solar based Permanent magnet brushless driven electric vehicle                          
+                         </h4>
+                        <p><b>Principal Investigator: </b>	Dr. M.V. Ramesh		
+                            
+                            </p>
+                        <p><b>Agency: </b>UGC		
+                            </p>
+                        <p><b>Amount: </b>  Rs.4,30,000/-	</p>
+                    </div>
+                    <div class="grid-item">
+                        <h4>Two day National Seminar on “Recent Innovative Trends of Electrical motors and its applications
+                         </h4>
+                        <p><b>Principal Investigator: </b>Dr. M.V. Ramesh</p>
+                        <p><b>Agency: </b>SERB</p>
+                        <p><b>Amount: </b>Rs.75,000/-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
     <audio id="thankYouAudio" src="thank_you.mp3" preload="auto"></audio>
     <audio id="thankYouAudioTelugu" src="thank_you_tel.mp3" preload="auto"></audio>
     <audio id="audio1" src="research.mp3" preload="auto"></audio>
     <audio id="audio1_telugu" src="research_telugu.mp3" preload="auto"></audio>
     <audio id="audio2" src="development.mp3" preload="auto"></audio>
-    <audio id="audio2_telugu" src="develpment_telugu.mp3" preload="auto"></audio>
+    <audio id="audio2_telugu" src="development_telugu.mp3" preload="auto"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
     <script>
-        let currentAudio = null; // Keep track of the currently playing audio
-        
+        // Chart.js creation function (changed to pie chart)
+        let currentAudio = null;
+        const createChart = (canvasId, labels, data) => {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const totalPublications = data.reduce((sum, value) => sum + value, 0);
+
+            new Chart(ctx, {
+                type: 'pie', // Changed from 'bar' to 'pie'
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            '#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#ff9f40'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        datalabels: {
+                            formatter: (value) => {
+                                return `${Math.round((value / totalPublications) * 100)}%`;
+                            }
+                        },
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        };
+
+        // Create pie charts for each year's publication data
+        const labels = ['Scopus', 'SCIE', 'Others'];
+        const data2023 = [56, 9, 0];
+        const data2022 = [55, 14, 0];
+        const data2021 = [40, 16, 9];
+        const data2020 =  [21, 12, 51];
+        const data2019 =  [18, 9, 45];
+
+        createChart('chart2023', labels, data2023);
+        createChart('chart2022', labels, data2022);
+        createChart('chart2021', labels, data2021);
+        createChart('chart2020', labels, data2020);
+        createChart('chart2019', labels, data2019);
         function playAudio(audioId) {
     const audioElementId = currentLanguage === 'telugu' ? `${audioId}_telugu` : audioId;
     const audio = document.getElementById(audioElementId);
@@ -208,7 +533,8 @@
                 "Institutional Developments":"అభివృద్ధి కార్యక్రమాలు",
                 "᯽ Solar PV 200 kW. Rooftop Installation":"᯽ 200 KW రూఫ్ టాప్ సోలార్ ప్లాంట్ అమరిక ( సౌర విద్యుత్ )",
                 "᯽ Design and Developement of 3 - Wheeler Electric Vehicle":"᯽ 3 వీలర్ ఎలక్ట్రిక్ వెహికల్ డిజైన్ మరియు అభివృద్ధి",
-                "᯽ Design and Developement of Automated Coconut Cutting Machine":"᯽ ఆటోమేటిక్ కోకోనాట్ (కొబ్బరికాయలు) కటింగ్ మెషిన్"
+                "᯽ Design and Developement of Automated Coconut Cutting Machine":"᯽ ఆటోమేటిక్ కోకోనాట్ (కొబ్బరికాయలు) కటింగ్ మెషిన్",
+                 "Student Activities": "విద్యార్థి కార్యకలాపాలు"
             },
             english: {
                 "హోమ్": "Home",
@@ -224,7 +550,8 @@
                 "Institutional Developments":"Institutional Developments",
                 "᯽ Design and Developement of Automated Coconut Cutting Machine":"᯽ Design and Developement of Automated Coconut Cutting Machine",
                 "᯽ Design and Developement of 3 - Wheeler Electric Vehicle":"᯽ Design and Developement of 3 - Wheeler Electric Vehicle",
-                "᯽ Solar PV 200 kW. Rooftop Installation":"᯽ Solar PV 200 kW. Rooftop Installation"
+                "᯽ Solar PV 200 kW. Rooftop Installation":"᯽ Solar PV 200 kW. Rooftop Installation",
+                "Student Activities": "Student Activities"
             }
         };
 
@@ -262,4 +589,5 @@
         document.addEventListener('DOMContentLoaded', applySavedLanguage);
     </script>
 </body>
-</html>  
+
+</html>

@@ -6,7 +6,7 @@
     <title>EEE Department | PVPSIT</title>
     <link rel="stylesheet" href="styles.css">                                    
     <script src="scripts.js" defer></script>
-    <style>
+    <style> 
         nav {
             display: flex;
             align-items: center;
@@ -70,7 +70,7 @@
         #date-box {
             position: absolute;
             top: 12px; /* Adjusted for better alignment */
-            right: 10px;
+            right: 8px;
             background-color: white;
             color: black;
             padding: 5px 10px;
@@ -82,7 +82,7 @@
         }
         #time-box {
             position: absolute;
-            top: 22px;
+            top: 14px;
             left: 10px;
             background-color: white;
             color: black;
@@ -93,8 +93,6 @@
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
-
-
         #main-container {
             display: flex;
             justify-content: space-between;
@@ -119,7 +117,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header class="header" id = "myHeader">
         <nav>
             <ul>
                 <li><a href="index.html"><b>Home</b></a></li>
@@ -129,6 +127,7 @@
                 <li><a href="labs.html"><b>Labs & Classrooms</b></a></li>
                 <li><a href="activities.html"><b>Placements</b></a></li>
                 <li><a href="General.html"><b>Route Map</b></a></li>
+                <li><a href="student.html"><b>Student Activities</b></a></li>
             </ul>
             <div id="date-box"></div>
             <div id="time-box"></div>
@@ -197,7 +196,8 @@
                 "Labs & Classrooms": "లాబ్స్ & క్లాస్రూమ్స్",
                 "Placements": "ప్లేస్మెంట్స్",
                 "Route Map": "రూట్ మ్యాప్",
-                "Hi, This is CINTIS!!": "నమస్కారం, నా పేరు CINTIS!!"
+                "Hi, This is CINTIS!!": "నమస్కారం, నా పేరు CINTIS!!",
+                "Student Activities": "విద్యార్థి కార్యకలాపాలు"
             }
         };
 
@@ -234,11 +234,18 @@
         function updateTimeBox() {
             const timeBox = document.getElementById("time-box");
             const now = new Date();
-            const formattedTime = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+            const formattedTime = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
             timeBox.textContent = formattedTime;
             setTimeout(updateTimeBox, 1000);
         }
 
+        document.addEventListener("DOMContentLoaded", () => {
+            updateTimeBox(); // Start updating time
+        });
         let shouldPlayGreeting = false; // Control variable for audio playback
 
         function changeLanguage(language) {
@@ -277,6 +284,18 @@
                 greetingAudio.play();
             }
         }
+        window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
 
         function updateDateBox() {
             const dateBox = document.getElementById("date-box");
